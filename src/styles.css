@@ -1,1 +1,229 @@
-/* You can add global styles to this file, and also import other style files */
+
+body {
+	background-color: rgb(230, 223, 208);
+}
+
+@media (min-width: 992px) {
+  .container, .container-lg, .container-md, .container-sm {
+    max-width: 720px;
+  }
+}
+
+.text-shadow {
+    text-shadow: 0px 0px 85px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 65px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 40px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 35px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+}
+
+.rotateleft {
+	rotate: -5deg;
+}
+
+.jumbotron {
+	overflow: hidden;
+	min-height: 300px;
+	height: 40vw;
+	max-height: 400px;
+	padding-top: 8vw;
+	background-image: url("/public/images/jumbotron-bg.jpg");
+  	background-color: #000000;
+  	background-size: cover;
+  	background-position: center center;
+}
+
+.jumbotron-resto {
+	overflow: hidden;
+	min-height: 200px;
+	height: 20vw;
+	padding-top: 8vw;
+	background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/public/images/jumbotron-bg.jpg);
+  	background-color: #000000;
+  	background-size: cover;
+  	background-position: center center;
+}
+
+.jumbospacer {
+	min-height: 90px;
+	height: 10vw;
+  }
+
+.card-img-top-smaller {
+	object-fit: cover;
+	object-position: bottom;
+	height: 280px;
+  }
+
+.logo-yolo {
+	font-size: 24px;
+	width: 36px;
+	height: 36px;
+	background: rgb(25,135,84);
+	background: linear-gradient(90deg, rgba(25,135,84,1) 49%, rgba(177,0,0,1) 50%);
+	color: white;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.user-icon {
+	font-size: 1.5rem;
+	color: #000000;
+	margin-right: 5px;
+}
+
+footer {
+	background: none !important;
+	background-color: none !important;
+    border: none !important;
+	border-top: 3px dotted #000000 !important;
+	border-top-width: 3px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+
+.shade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: rgb(230, 223, 208);
+}
+
+.blackboard {
+    background: #252525;
+    border: 20px solid #8B5A2B; 
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    width: 80vw; 
+    max-width: 1000px;
+}
+
+.blackboard h2 {
+    font-family: 'Patrick Hand SC', cursive;
+    color: #FFD700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.plat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+    margin-top: 10px;
+}
+
+.nom-plat {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.ligne-point {
+    flex-grow: 1;
+    border-bottom: 1px dashed white;
+    margin: 0 10px;
+}
+
+.prix-plat {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.description-plat {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    font-style: italic;
+    color: #FFD700;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+    margin: 5px 0 15px 0;
+    text-align: left;
+    width: 100%;
+    max-width: 90%;
+    line-height: 1.4;
+}
+
+.errors {
+    background-color: #ff8888;
+    border: solid #800000 1px;
+    color: #800000;
+    padding: 5px 10px;
+    margin: 5px 0;
+    font-weight: bold;
+    display: inline-block;
+    white-space: wrap; 
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh; /* Ajuste la hauteur pour un bon placement */
+}
+
+.error_input {
+	border: solid #800000 1px;
+}
+
+.about-section {
+    margin-top: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://source.unsplash.com/1600x900/?pizza,restaurant'); /* Image de fond floutée */
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #D35400; /* Orange chaleureux */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.about-section h3::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background-color: #D35400;
+    display: block;
+    margin: 10px auto;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+}
+
+.about-section p:last-child {
+    font-weight: bold;
+    font-style: italic;
+    color: #E74C3C;
+}
