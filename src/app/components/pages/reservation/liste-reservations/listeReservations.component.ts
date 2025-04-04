@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-reservation',
   imports: [],
-  templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.css'
+  templateUrl: './listeReservations.component.html',
+  styleUrl: './listeReservations.component.css'
 })
 export class ReservationComponent {
 
