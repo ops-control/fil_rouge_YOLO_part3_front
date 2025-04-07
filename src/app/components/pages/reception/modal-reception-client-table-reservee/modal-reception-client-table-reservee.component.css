@@ -1,0 +1,11 @@
+.modal {
+    display: flex !important;
+  }
+  
+  .modal-backdrop {
+    z-index: 1040; /* pour que le fond soit derrière la modale */
+  }
+  
+  .modal-dialog {
+    max-width: 500px; /* ou la taille que tu préfères */
+  }

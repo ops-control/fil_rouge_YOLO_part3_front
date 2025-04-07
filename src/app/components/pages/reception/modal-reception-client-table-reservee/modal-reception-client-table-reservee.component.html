@@ -1,1 +1,26 @@
-<p>modal-reception-client-table-reservee works!</p>
+<div class="modal fade show" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true" *ngIf="table">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" (click)="fermerModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container d-flex flex-column justify-content-center align-items-center">
+            <div class="row g-3">
+              <div class="col-12">
+                <h2 class="card-text pb-2 text-center">Réservation de la table n°{{ table.numeroTable }}</h2>
+                <h4 class="card-text pb-2 text-center text-bg-light">Confirmer l'arrivée de {{table.reservations?.[0]?.utilisateur?.prenom }} {{ table.reservations?.[0]?.utilisateur?.nom}}</h4>
+              </div>
+              <div class="col-md-6 d-inline-flex justify-content-center align-items-center">
+                <label for="nbPers">Nombre de personnes :</label>
+                <input type="number" [(ngModel)]="nbPers" value="{{ table.reservations?.[0]?.nbPersonne }}" min="1" max="8" />
+              </div>
+              <div class="col-12 pt-3 d-flex flex-column justify-content-center align-items-center">
+                <button (click)="confirmer()" class="btn btn-success rounded-pill px-4 mx-2">Confirmer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
