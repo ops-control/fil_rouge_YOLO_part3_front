@@ -1,0 +1,23 @@
+<div *ngIf="carte" class="carte-container">
+    <h1>{{ carte.nom }}</h1>
+    <p>{{ carte.description }}</p>
+  
+    <!-- Loop through the predefined categories -->
+    <div *ngFor="let category of categories" class="category-section">
+      <h2>{{ category.title }}</h2>
+      <div class="plats-list">
+        <div *ngFor="let plat of getPlatsByCategory(category.libelle)" class="plat-item">
+          <div class="plat-name">{{ plat.nom }}</div>
+          <div class="plat-description">{{ plat.description }}</div>
+          <div class="plat-prix">{{ plat.prix }} €</div>
+        </div>
+        <div *ngIf="getPlatsByCategory(category.libelle).length === 0" class="no-plats">
+          Aucun plat disponible dans cette catégorie.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!carte" class="loading">
+    Chargement de la carte...
+  </div>
