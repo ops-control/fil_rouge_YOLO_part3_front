@@ -1,0 +1,6 @@
+<div class="bg-light rounded p-2 m-1">
+    <p>Le {{ reservation?.horaireReservation | date : 'dd/MM/yyyy à HH:mm' }}</p>
+    <p>Client : {{ reservation?.utilisateur?.prenom }} {{ reservation?.utilisateur?.nom }} - {{ reservation?.nbPersonne }} personnes</p>
+    <p>Table réservée : {{reservation?.idTableRestaurant}}</p>
+    <p>Réservation {{ reservation?.statut }}</p>
+</div>
