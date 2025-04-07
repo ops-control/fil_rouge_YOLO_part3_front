@@ -1,1 +1,11 @@
-<p>liste-tables-occupees works!</p>
+<div class="container d-flex justify-content-center mt-5">
+    <h2 class="display-4 fw-bold lh-1 pb-3">Tables en salle</h2>
+</div>
+<div class="container d-flex justify-content-center mt-3 px-5 px-sm-2">
+    <p class="text-center" *ngIf="tablesOccupees.length == 0">Il n'y a aucune table occupée.</p>
+    <div class="row w-100">
+        <div class="col-6" *ngFor="let table of tablesOccupees">
+            <app-table-occupee-item [tableOccupee]="table"></app-table-occupee-item>
+        </div>
+    </div>
+</div>
