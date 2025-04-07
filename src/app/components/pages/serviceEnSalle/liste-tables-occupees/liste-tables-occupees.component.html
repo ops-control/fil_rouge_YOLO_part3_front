@@ -3,8 +3,8 @@
 </div>
 <div class="container d-flex justify-content-center mt-3 px-5 px-sm-2">
     <p class="text-center" *ngIf="tablesOccupees.length == 0">Il n'y a aucune table occupée.</p>
-    <div class="row">
-        <div class="col-4" *ngFor="let table of tablesOccupees">
+    <div class="row w-100">
+        <div class="col-6" *ngFor="let table of tablesOccupees">
             <app-table-occupee-item [tableOccupee]="table"></app-table-occupee-item>
         </div>
     </div>
