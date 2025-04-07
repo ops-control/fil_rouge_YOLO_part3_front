@@ -1,1 +1,7 @@
 <p>reception-clientele works!</p>
+<ul>
+    <li *ngFor="let table of tables">
+      Réservation #{{ table.idTableRestaurant }} - {{ table.nbPlace }} personnes - 
+      Statut : {{ table.reservations.statut }}
+    </li>
+  </ul>
