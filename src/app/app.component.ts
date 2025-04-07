@@ -5,7 +5,7 @@ import { ReservationComponent } from './components/pages/reservation/liste-reser
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, ReservationComponent],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
