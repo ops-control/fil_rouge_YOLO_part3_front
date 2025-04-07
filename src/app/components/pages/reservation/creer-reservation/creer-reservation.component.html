@@ -1,1 +1,17 @@
-<p>creer-reservation works!</p>
+<h3>Nouvelle Réservation</h3>
+<div class="card">
+    <form [formGroup]="formNewReservation" (submit)="saveReservation()">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" formControlName="username">
+            <span *ngIf="display_error('username', 'required')"> Champ requis</span>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" formControlName="password">
+            <span *ngIf="display_error('password', 'required')"> Champ requis</span>
+            <span *ngIf="display_error('password', 'minlength')"> Le mot de passe doit faire au moins 8 caractères</span>
+        </div>
+        <button class="btn btn-outline-success" type="submit" (click)="saveReservation()" [disabled]="!formNewReservation.valid">Enregistrer</button>
+    </form>
+</div>
