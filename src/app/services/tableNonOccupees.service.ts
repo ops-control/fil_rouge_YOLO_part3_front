@@ -5,12 +5,12 @@ import { TableNonOccupees } from '../interfaces/table-non-occupees';
 @Injectable({
   providedIn: 'root'
 })
-export class TableService {
+export class TableNonOccuppesService {
 
   constructor(private client : HttpClient) { }
 
-  get_tables_non_occupees() {
-    return this.client.get<TableNonOccupees[]>("http://localhost:8080/tables/1")
+  get_tables_non_occupees(idRestaurant: number) {
+    return this.client.get<TableNonOccupees[]>(`http://localhost:8080/tables/${idRestaurant}`);
   }
 
 }
