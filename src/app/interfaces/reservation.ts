@@ -1,3 +1,4 @@
+import { TableNonOccupees } from "./table-non-occupees";
 import { Utilisateur } from "./utilisateur";
 
 export interface Reservation {
