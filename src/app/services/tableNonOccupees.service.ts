@@ -18,9 +18,11 @@ export class TableNonOccuppesService {
 
   creation_reservation(reservation : Reservation){
     const reservationData = {
-      "nbPersonne": reservation.nbPersonne,
-      "horaireReservation": new Date,
-      "statut": "confirmée"
+      nbPersonne: reservation.nbPersonne,
+      horaireReservation: reservation.horaireReservation,
+      statut: reservation.statut,
+      utilisateur: reservation.utilisateur,
+      idRestaurant: reservation.idRestaurant
     };
     return this.client.post(`http://localhost:8080/reservations`, reservationData);
   }

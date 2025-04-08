@@ -38,7 +38,7 @@ export class ReservationComponent implements OnInit {
   }
 
   getTableNumberByReservation(reservation: Reservation): number | undefined {
-    const tableNonOccupee = this.tablesNonOccupees.find(table => table.idTableRestaurant === reservation.idTableRestaurant);
+    const tableNonOccupee = this.tablesNonOccupees.find(table => table.idRestaurant === reservation.idRestaurant);
     return tableNonOccupee ? tableNonOccupee.numeroTable : undefined;
   }
 

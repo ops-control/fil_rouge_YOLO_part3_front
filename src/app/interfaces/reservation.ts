@@ -7,5 +7,5 @@ export interface Reservation {
     statut: string;
     horaireReservation: Date;
     utilisateur: Utilisateur;
-    idTableRestaurant: number;
+    idRestaurant: number;
 }

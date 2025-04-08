@@ -19,7 +19,8 @@
     <!-- Affiche la modale si la table sélectionnée est libre -->
     <app-modal-reception-client-table-libre *ngIf="tableSelectionnee && (!tableSelectionnee.reservations || tableSelectionnee.reservations.length === 0)"
                                             [table]="tableSelectionnee"
-                                            (closeModal)="fermerModal()">
+                                            (closeModal)="fermerModal()"
+                                            (reservationCreee)="creationReservation($event)">
     </app-modal-reception-client-table-libre>
 </div>
 
