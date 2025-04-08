@@ -1,6 +1,7 @@
-<div class="bg-light rounded p-2 m-1">
-    <p>Le {{ reservation?.horaireReservation | date : 'dd/MM/yyyy à HH:mm' }}</p>
-    <p>Client : {{ reservation?.utilisateur?.prenom }} {{ reservation?.utilisateur?.nom }} - {{ reservation?.nbPersonne }} personnes</p>
-    <p>Table réservée : {{reservation?.idTableRestaurant}}</p>
-    <p>Réservation {{ reservation?.statut }}</p>
+<div class="reservation-card bg-light rounded p-3 mb-3">
+    <p class="reservation-date mb-1">Le {{ reservation?.horaireReservation | date : 'dd/MM/yyyy à HH:mm' }}</p>
+    <p class="reservation-client mb-1">Client : {{ reservation?.utilisateur?.prenom }} {{ reservation?.utilisateur?.nom | uppercase }}</p>
+    <p class="reservation-people mb-1">Nombre de personnes : {{ reservation?.nbPersonne }}</p>
+    <p class="reservation-table mb-1" *ngIf="displayTableNumber()">Table réservée : {{ tableNumber }}</p>
+    <p class="reservation-status mb-0">Réservation {{ reservation?.statut }}</p>
 </div>
