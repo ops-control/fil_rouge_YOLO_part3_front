@@ -1,1 +1,4 @@
-<p>liste-commandes-servies works!</p>
+
+<div class="d-grid gap-2 col-8 mx-auto" >
+    <button class="btn btn-success" type="button" *ngFor="let cmd of commandes" [routerLink]="['/payer', cmd.idCommande]">  Table : {{cmd.numeroTable}} <br> Mr/Mme {{cmd.nomClient}} <br> {{cmd.nbPersonnes}} personnes </button>
+</div>

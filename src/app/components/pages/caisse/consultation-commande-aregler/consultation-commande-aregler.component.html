@@ -1,1 +1,22 @@
-<p>consultation-commande-aregler works!</p>
+<p>{{commande?.idCommande}}{{commande?.nomClient}}
+    {{commande?.numeroTable}} {{commande?.lignes?.[0]?.plat?.nom}}</p>
+
+    <div class="d-grid gap-2 col-8 mx-auto" >
+        <button class="btn btn-success" type="button"  (click)="putCommande(commande?.idCommande ?? 0)"id="liveToastBtn">  Confirmer le payment </button>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">        
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">Paiement</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Paiement réussi.
+        </div>
+        </div>
+      </div>
+      
+
+      
