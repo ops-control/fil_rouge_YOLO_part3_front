@@ -1,0 +1,116 @@
+<div class="container px-3">
+    <div class="container px-3 bg-white rounded-2">
+      <div *ngIf="commande" class="py-3">
+        <div class="row align-items-start pb-2">
+          <div class="col-10 pt-1"><h2>Commande n°</h2></div>
+          <div class="col-2 text-end fs-1 text-black">
+            <h1>
+              <a [routerLink]="['/commandes']" routerLinkActive="active">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16" >
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+              </svg></a>
+            </h1>
+          </div>
+          <div class="col-10 pb-2"><h3>Table n°</h3></div>
+  
+        </div>
+          
+          <div *ngFor="let cat of getCategorie()" class="">
+            <div class="row align-items-center mb-2 pe-3 bg-light rounded-5">              
+              <div class="col-6 pt-1">
+                <div><h4>{{ cat }}</h4></div>
+              </div>
+              <div class="col-2 text-end text-black">
+                <div>Qté</div>
+              </div>
+              <div class="col-2 text-end text-black">
+                <div>Prix</div>
+              </div>
+              <div class="col-2 text-end text-black">
+                <div>Total</div>
+              </div>
+            </div>
+            <div class="plats-list pb-3">
+              <div *ngFor="let ligne of getPlatsByCategorie(cat)">
+                <div class="row align-items-center">
+                  <div class="col-6 pt-1">
+                    <div>{{ ligne.plat.nom }}</div>
+                  </div>
+                  <div class="col-2 text-end text-black">
+                    <div>{{ ligne.quantite }}</div>
+                  </div>
+                  <div class="col-2 text-end text-black">
+                    <div>{{ ligne.plat.prix }} €</div>
+                  </div>
+                  <div class="col-2 text-end text-black">
+                    <div>{{ ligne.quantite*ligne.plat.prix }} €</div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="getPlatsByCategorie(cat).length === 0">
+                Aucun plat disponible dans cette catégorie.
+              </div>
+            </div>
+          </div>
+  
+          <div class="row align-items-center mb-2 pe-3 bg-warning-subtle rounded-5">            
+            <div class="col-6 pt-1">
+              <div><h4>TOTAL</h4></div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>HT</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>TVA</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>TTC</div>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-6 pt-1">
+              <div>Total de la commande</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>{{getTotalCommande()*0.9}} €</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>5.5 %</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>{{getTotalCommande()}} €</div>
+            </div>
+          </div>
+  
+        </div>
+        
+        <div *ngIf="!commande" class="loading">
+          Chargement de la carte...
+        </div>
+      </div>
+  </div>
+
+
+
+    <div class="d-grid gap-2 col-5 mx-auto" >
+        <button class="btn btn-success" type="button"  (click)="putCommande(commande?.idCommande ?? 0)"id="liveToastBtn">  Confirmer le payment </button>
+    </div>
+
+
+
+
+    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">        
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Paiement</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Paiement réussi.
+        </div>
+        </div>
+      </div>
+      
+
+      
