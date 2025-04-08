@@ -3,10 +3,11 @@ import { CarteService } from '../../../../services/carte.service';
 import { Carte } from '../../../../interfaces/carte';
 import { Plat } from '../../../../interfaces/plat';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-carte',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './carte.component.html',
   styleUrls: ['./carte.component.css']
 })
