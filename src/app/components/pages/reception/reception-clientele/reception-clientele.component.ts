@@ -20,7 +20,7 @@ export class ReceptionClienteleComponent {
   constructor(private service : TableNonOccuppesService, private route : ActivatedRoute) {
     const idRestaurant = Number(this.route.snapshot.paramMap.get('id'));
     service.get_tables_non_occupees(idRestaurant).subscribe(resultat => {
-      this.tables_non_occupees = resultat ;
+      this.tables_non_occupees = resultat;
     });
   }
 

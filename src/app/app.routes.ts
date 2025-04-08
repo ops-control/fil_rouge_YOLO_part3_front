@@ -4,11 +4,14 @@ import { ReservationComponent } from './components/pages/reservation/liste-reser
 import { CreerReservationComponent } from './components/pages/reservation/creer-reservation/creer-reservation.component';
 import { ListeTablesOccupeesComponent } from './components/pages/serviceEnSalle/liste-tables-occupees/liste-tables-occupees.component';
 import { ReceptionClienteleComponent } from './components/pages/reception/reception-clientele/reception-clientele.component';
+import { ConnexionComponent } from './components/pages/connexion/connexion.component';
 
 export const routes: Routes = [
-    { path: "", component: AccueilComponent},
+    { path: "accueil", component: AccueilComponent},
+    { path: "connexion", component: ConnexionComponent},
     { path: "tables/occupees", component: ListeTablesOccupeesComponent},
     { path: "reservations", component: ReservationComponent},
     { path: "reservations/creerResa", component: CreerReservationComponent},
-    { path: "reception-clientele/:id", component: ReceptionClienteleComponent}
+    { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
+    { path: "**", redirectTo : "/accueil"}
 ];

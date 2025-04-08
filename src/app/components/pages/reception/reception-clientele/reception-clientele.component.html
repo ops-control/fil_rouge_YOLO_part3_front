@@ -26,8 +26,8 @@
 <div>
     <!-- Affiche la modale si la table sélectionnée est réservée -->
     <app-modal-reception-client-table-reservee *ngIf="tableSelectionnee && tableSelectionnee.reservations && tableSelectionnee.reservations.length > 0"
-        [table]="tableSelectionnee"
-        (closeModal)="fermerModal()">
-</app-modal-reception-client-table-reservee>
+                                                [table]="tableSelectionnee"
+                                                (closeModal)="fermerModal()">
+    </app-modal-reception-client-table-reservee>
 </div>
 

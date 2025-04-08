@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/global/header/header.component";
-import { ReservationComponent } from './components/pages/reservation/liste-reservations/listeReservations.component';
 
 @Component({
   selector: 'app-root',
