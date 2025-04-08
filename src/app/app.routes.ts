@@ -5,9 +5,10 @@ import { CreerReservationComponent } from './components/pages/reservation/creer-
 import { ListeTablesOccupeesComponent } from './components/pages/serviceEnSalle/liste-tables-occupees/liste-tables-occupees.component';
 import { CarteComponent } from './components/pages/serviceEnSalle/carte/carte.component';
 import { ReceptionClienteleComponent } from './components/pages/reception/reception-clientele/reception-clientele.component';
+import { ConnexionComponent } from './components/pages/connexion/connexion.component';
 
 export const routes: Routes = [
-    { path: "", component: AccueilComponent},
+    { path: "accueil", component: AccueilComponent},
     { path: "service", component: ListeTablesOccupeesComponent},
     { path: "reservations", component: ReservationComponent},
     { path: "reservations/creer-resa", component: CreerReservationComponent},
