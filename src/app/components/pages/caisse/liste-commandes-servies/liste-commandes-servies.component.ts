@@ -14,11 +14,9 @@ export class ListeCommandesServiesComponent {
   commandes : CommandeServie[]=[];
   constructor(private service: CaisseService,  private router: Router,
   ){
-    setInterval(() => {
-      service.getCommande().subscribe(response => {
-        this.commandes = response;
-      });
-    }, 800);
+
+    service.getCommande().subscribe(response => {
+      this.commandes = response});
   }
 
  

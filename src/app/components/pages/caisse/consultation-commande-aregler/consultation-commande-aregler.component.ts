@@ -3,10 +3,12 @@ import { CaisseService } from '../../../../services/caisse.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Commande } from '../../../../interfaces/commande';
 import * as bootstrap from 'bootstrap';
+import { CommonModule } from '@angular/common';
+import { LigneCommande } from '../../../../interfaces/ligneCommande';
 
 @Component({
   selector: 'app-consultation-commande-aregler',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './consultation-commande-aregler.component.html',
   styleUrl: './consultation-commande-aregler.component.css'
 })
@@ -15,6 +17,7 @@ export class ConsultationCommandeAReglerComponent {
   idCommande?: number;
   commande?:Commande;
   private toastEl: any;
+  categories: string[]= [];
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +38,35 @@ export class ConsultationCommandeAReglerComponent {
       });
     }
   }
+
+
+  getCategorie(): string[] {
+    if (!this.commande || !this.commande.lignes) {
+      return [];
+    }
+    for (const ligne of this.commande?.lignes ?? []) {
+      if (!this.categories.includes(ligne.plat.categorie.libelle)) {
+        this.categories.push(ligne.plat.categorie.libelle);
+      }    
+    }
+    return this.categories;
+  }
+
+  getPlatsByCategorie(libelle: string): LigneCommande[] {
+      if (!this.commande || !this.commande.lignes) {
+        return [];
+      }
+  
+       return this.commande.lignes.filter(ligne => ligne.plat.categorie.libelle === libelle);
+    }
+
+  getTotalCommande(){
+      let somme: number = 0;
+      for (const ligne of this.commande?.lignes ?? []) {
+        somme=ligne.quantite*ligne.plat.prix+somme;
+      }
+      return somme;
+    }
 
   ngAfterViewInit(): void {
     const toastElement = document.getElementById('liveToast');
