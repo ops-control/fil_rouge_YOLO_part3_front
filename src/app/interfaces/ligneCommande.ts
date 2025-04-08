@@ -1,4 +1,4 @@
-import { Plat } from "./Plat";
+import { Plat } from "./plat";
 
 export interface LigneCommande {
     idLigneCommande:number;

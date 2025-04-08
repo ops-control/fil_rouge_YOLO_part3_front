@@ -1,1 +1,28 @@
-<p>creer-reservation works!</p>
+<div class="container mt-5">
+    <h3 class="mb-4">Nouvelle Réservation</h3>
+    <div class="card p-4">
+        <form [formGroup]="formNewReservation" (submit)="saveReservation()">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" name="date" formControlName="date" class="form-control">
+                <div *ngIf="display_error('dateEtHoraire', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="heure" class="form-label">Heure</label>
+                <input type="time" id="heure" name="heure" formControlName="heure" class="form-control">
+                <div *ngIf="display_error('heure', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="nbPersonnes" class="form-label">Nombre de personnes</label>
+                <input type="number" id="nbPersonnes" name="nbPersonnes" formControlName="nbPersonnes" class="form-control">
+                <div *ngIf="display_error('nbPersonnes', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="nameClient" class="form-label">Nom du client</label>
+                <input type="text" id="nameClient" name="nameClient" class="form-control">
+            </div>
+            <app-liste-tables-non-occupees></app-liste-tables-non-occupees>
+            <button class="btn btn-outline-success mt-3" type="submit" (click)="saveReservation()" [disabled]="!formNewReservation.valid">Enregistrer</button>
+        </form>
+    </div>
+</div>

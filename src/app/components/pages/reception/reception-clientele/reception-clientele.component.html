@@ -1,1 +1,30 @@
-<p>reception-clientele works!</p>
+<div class="container d-flex justify-content-center mb-5" *ngFor="let table of tables_non_occupees">
+    <div class="card border border-black btn btn-success rounded-pill px-4 mx-2" style="width: 100%;" (click)="selectionnerTable(table)">
+        <h3 class="card-text pb-2 text-center">Table n°{{ table.numeroTable }}</h3>
+        <h4 class="card-text pb-2">Nombre de places : {{ table.nbPlaces }}</h4>
+        <div class="card-body text-center my-3 m-0" *ngIf="table.reservations && table.reservations.length > 0">
+            <h4 class="card-text pb-2">Réservée par : {{ table.reservations[0].utilisateur?.prenom }} {{ table.reservations[0].utilisateur?.nom }}</h4>
+            <h4 class="card-text pb-2">Statut : {{ table.reservations[0].statut }}</h4>
+        </div>
+        <div class="card-body text-center my-3" *ngIf="!table.reservations || table.reservations.length === 0">
+            <h4 class="card-text pb-2">Statut : Libre</h4>
+        </div>
+    </div>
+</div>
+
+<div>
+    <!-- Affiche la modale si la table sélectionnée est libre -->
+    <app-modal-reception-client-table-libre *ngIf="tableSelectionnee && (!tableSelectionnee.reservations || tableSelectionnee.reservations.length === 0)"
+                                            [table]="tableSelectionnee"
+                                            (closeModal)="fermerModal()">
+    </app-modal-reception-client-table-libre>
+</div>
+
+<div>
+    <!-- Affiche la modale si la table sélectionnée est réservée -->
+    <app-modal-reception-client-table-reservee *ngIf="tableSelectionnee && tableSelectionnee.reservations && tableSelectionnee.reservations.length > 0"
+        [table]="tableSelectionnee"
+        (closeModal)="fermerModal()">
+</app-modal-reception-client-table-reservee>
+</div>
+
