@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TableNonOccupees } from '../interfaces/table-non-occupees';
 import { Utilisateur } from '../interfaces/utilisateur';
+import { Reservation } from '../interfaces/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,26 @@ export class TableNonOccuppesService {
     return this.client.get<TableNonOccupees[]>(`${this.BASE_URL}${idRestaurant}`);
   }
 
-  creationReservation(nbPersonnes: number, statut : string, horaireReservation: Date, idReservation ?: number, utilisateur ?: Utilisateur){
+  creation_reservation(reservation : Reservation){
     const reservationData = {
-      "nbPersonne": nbPersonnes,
-      "horaireReservation": new Date,
-      "statut": "confirmée"
+      nbPersonne: reservation.nbPersonne,
+      horaireReservation: reservation.horaireReservation,
+      statut: reservation.statut,
+      utilisateur: {
+        idUtilisateur: reservation.utilisateur.idUtilisateur
+      },
+      idTableRestaurant: reservation.idTableRestaurant,
+      idRestaurant: reservation.idRestaurant
     };
-    return this.client.post(`${this.BASE_URL}${idReservation}/reservations`, reservationData);
+    console.log("dans le service :" + reservationData.nbPersonne, reservationData.horaireReservation, reservationData.statut, reservationData.utilisateur, reservationData.idRestaurant, reservationData.idTableRestaurant,)
+    return this.client.post<Reservation>(`http://localhost:8080/reservations`, reservationData);
   }
+
+  modification_statut_reservation(idReservation: number, nouveauStatut: string) {
+    return this.client.put<Reservation>(
+      `http://localhost:8080/reservations/${idReservation}/statut`,
+      { statut: nouveauStatut }
+    );
+  }
+
 }

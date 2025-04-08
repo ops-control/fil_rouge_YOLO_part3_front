@@ -6,6 +6,7 @@ import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
 import { TableNonOccuppesService } from '../../../../services/tableNonOccupees.service';
 import { ModalReceptionClientTableLibreComponent } from '../modal-reception-client-table-libre/modal-reception-client-table-libre.component';
 import { ModalReceptionClientTableReserveeComponent } from '../modal-reception-client-table-reservee/modal-reception-client-table-reservee.component';
+import { Reservation } from '../../../../interfaces/reservation';
 
 @Component({
   selector: 'app-reception-clientele',
@@ -20,7 +21,7 @@ export class ReceptionClienteleComponent {
   constructor(private service : TableNonOccuppesService, private route : ActivatedRoute) {
     const idRestaurant = Number(this.route.snapshot.paramMap.get('id'));
     service.get_tables_non_occupees(idRestaurant).subscribe(resultat => {
-      this.tables_non_occupees = resultat ;
+      this.tables_non_occupees = resultat;
     });
   }
 
@@ -30,5 +31,14 @@ export class ReceptionClienteleComponent {
 
   fermerModal() {
     this.tableSelectionnee = null;
+  }
+
+  creationReservation(reservation : Reservation) {
+    this.service.creation_reservation(reservation).subscribe();
+  }
+
+  modificationStatutReservation(donnees: { id: number, statut: string }) {
+    this.service.modification_statut_reservation(donnees.id, donnees.statut).subscribe(() => {
+    });
   }
 }
