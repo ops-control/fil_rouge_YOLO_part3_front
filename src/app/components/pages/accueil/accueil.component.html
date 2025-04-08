@@ -1,14 +1,22 @@
-<div class="jumbotron px-2">
-    <div class="container">
-      <div class="row align-items-start">
-        <div class="col-12">
-          <h1 class="display-4 fw-bold lh-1 text-white pb-3">Bienvenue chez<br>Pizza&nbsp;YOLO</h1>
-          <a [routerLink]="['/reception-clientele' , 1]" routerLinkActive="active" class="btn btn-light">Réception Clientele</a>
-          <a [routerLink]="['/tables/occupees']" routerLinkActive="active" class="btn btn-light">Tables occupées</a>
-          <a [routerLink]="['/reservations']" routerLinkActive="active" class="btn btn-light">Réservations</a>
-          <a class="btn btn-success btn-lg rounded-pill" href="listeRestaurants" role="button">Nos restaurants</a>
-        </div>
-      </div>
+<div class="container d-flex justify-content-center mt-5">
+  <h3 class="display-4 fw-bold lh-1 pb-3">Pizza Yolo</h3>
+</div>
+<div class="container d-flex justify-content-center mt-3 px-sm-2">
+  <div class="row w-100">
+    <div class="col-6 mb-4">
+      <button [routerLink]="['/reception-clientele' , 1]" routerLinkActive="active" class="btn btn-success w-100 h-100 mb-4 py-4 fs-4">Réception<br>clientèle</button>
+    </div>
+    <div class="col-6 mb-4">
+      <button [routerLink]="['/reservations']" routerLinkActive="active" class="btn btn-success w-100 h-100 mb-4 py-4 fs-4">Réservations</button>
+    </div>
+    <div class="col-6 mb-4">
+      <button [routerLink]="['/service']" routerLinkActive="active" class="btn btn-success w-100 h-100 mb-4 py-4 fs-4">Service<br>en salle</button>
+    </div>
+    <div class="col-6 mb-4">
+      <button class="btn btn-success w-100 h-100 mb-4 fs-4">Cuisine</button>
+    </div>
+    <div class="col-12 mb-4">
+      <button class="btn btn-success w-100 h-100 mb-4 py-3 fs-4">Caisse</button>
     </div>
   </div>
-  
+</div>

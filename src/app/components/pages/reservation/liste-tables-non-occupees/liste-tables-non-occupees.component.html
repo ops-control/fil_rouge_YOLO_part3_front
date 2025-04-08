@@ -1,0 +1,9 @@
+<div class="container mt-4">
+    <h4 class="mb-3 text-center">Attribuer une table</h4>
+    <p class="text-center text-danger" *ngIf="tablesNonOccupees.length == 0">Il n'y a aucune table disponible.</p>
+    <div class="row">
+        <div class="col-md-6 mb-3" *ngFor="let table of tablesNonOccupees">
+            <app-table-non-occupee-item [tableNonOccupee]="table"></app-table-non-occupee-item>
+        </div>
+    </div>
+</div>
