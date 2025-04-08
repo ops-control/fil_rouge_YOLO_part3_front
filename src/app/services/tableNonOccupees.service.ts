@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TableNonOccupees } from '../interfaces/table-non-occupees';
 import { Utilisateur } from '../interfaces/utilisateur';
+import { Reservation } from '../interfaces/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class TableNonOccuppesService {
     return this.client.get<TableNonOccupees[]>(`${this.BASE_URL}${idRestaurant}`);
   }
 
-  creationReservation(nbPersonnes: number, statut : string, horaireReservation: Date, idReservation ?: number, utilisateur ?: Utilisateur){
+  creation_reservation(reservation : Reservation){
     const reservationData = {
-      "nbPersonne": nbPersonnes,
+      "nbPersonne": reservation.nbPersonne,
       "horaireReservation": new Date,
       "statut": "confirmée"
     };
-    return this.client.post(`${this.BASE_URL}${idReservation}/reservations`, reservationData);
+    return this.client.post(`http://localhost:8080/reservations`, reservationData);
   }
 }

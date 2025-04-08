@@ -20,7 +20,7 @@ export class ModalReceptionClientTableReserveeComponent {
   closeModal: EventEmitter<void> = new EventEmitter<void>();
 
   confirmer() {
-    console.log("confirmation")
+    console.log("confirmation");
     this.closeModal.emit();
   }
 

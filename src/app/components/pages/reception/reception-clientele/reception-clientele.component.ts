@@ -6,6 +6,7 @@ import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
 import { TableNonOccuppesService } from '../../../../services/tableNonOccupees.service';
 import { ModalReceptionClientTableLibreComponent } from '../modal-reception-client-table-libre/modal-reception-client-table-libre.component';
 import { ModalReceptionClientTableReserveeComponent } from '../modal-reception-client-table-reservee/modal-reception-client-table-reservee.component';
+import { Reservation } from '../../../../interfaces/reservation';
 
 @Component({
   selector: 'app-reception-clientele',
@@ -31,4 +32,10 @@ export class ReceptionClienteleComponent {
   fermerModal() {
     this.tableSelectionnee = null;
   }
+
+  creationReservation(reservation : Reservation) {
+    //doit recevoir les informations de la modale, créer une reservation type à envoyer à l'API.
+    this.service.creation_reservation(reservation).subscribe();
+  }
+
 }
