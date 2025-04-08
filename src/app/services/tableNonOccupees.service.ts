@@ -31,4 +31,8 @@ export class TableNonOccuppesService {
     return this.client.post<Reservation>(`http://localhost:8080/reservations`, reservationData);
   }
 
+  modification_statut_reservation(statut : string) {
+
+  }
+
 }

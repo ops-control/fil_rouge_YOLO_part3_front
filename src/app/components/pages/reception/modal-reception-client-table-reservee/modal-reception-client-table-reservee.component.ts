@@ -20,7 +20,7 @@ export class ModalReceptionClientTableReserveeComponent {
   closeModal: EventEmitter<void> = new EventEmitter<void>();
 
   confirmer() {
-    console.log("confirmation");
+    // doit mettre à jour le statut de la réservation sur la table sélectionnée en "arrivée"
     this.closeModal.emit();
   }
 
