@@ -23,12 +23,14 @@ export class ModalReceptionClientTableLibreComponent {
 
   confirmer() {
     if (!this.table || this.nbPers <= 0) return;
+    let now = new Date();
+    now.setHours(now.getHours()+2);
 
     const nouvelleReservation: Reservation = {
-      idReservation: 8,
+      idReservation : 0,
       nbPersonne: this.nbPers,
       statut: 'confirmée',
-      horaireReservation: new Date(),
+      horaireReservation: now,
       utilisateur: {
         idUtilisateur: 1,
         nom: 'Temp',
@@ -36,10 +38,11 @@ export class ModalReceptionClientTableLibreComponent {
         login : '',
         password : ''
       },
-      idRestaurant : this.table.idRestaurant,
+      idRestaurant: this.table.idRestaurant,
+      idTableRestaurant : this.table.idTableRestaurant
     };
-  
-    this.reservationCreee.emit(nouvelleReservation); // 🔥 On envoie au parent
+    console.log(nouvelleReservation)
+    this.reservationCreee.emit(nouvelleReservation);
     this.closeModal.emit(); 
   }
 

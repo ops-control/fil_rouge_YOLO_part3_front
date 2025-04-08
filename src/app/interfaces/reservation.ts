@@ -8,4 +8,5 @@ export interface Reservation {
     horaireReservation: Date;
     utilisateur: Utilisateur;
     idRestaurant: number;
+    idTableRestaurant : number;
 }

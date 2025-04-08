@@ -21,9 +21,14 @@ export class TableNonOccuppesService {
       nbPersonne: reservation.nbPersonne,
       horaireReservation: reservation.horaireReservation,
       statut: reservation.statut,
-      utilisateur: reservation.utilisateur,
+      utilisateur: {
+        idUtilisateur: reservation.utilisateur.idUtilisateur
+      },
+      idTableRestaurant: reservation.idTableRestaurant,
       idRestaurant: reservation.idRestaurant
     };
-    return this.client.post(`http://localhost:8080/reservations`, reservationData);
+    console.log("dans le service :" + reservationData.nbPersonne, reservationData.horaireReservation, reservationData.statut, reservationData.utilisateur, reservationData.idRestaurant, reservationData.idTableRestaurant,)
+    return this.client.post<Reservation>(`http://localhost:8080/reservations`, reservationData);
   }
+
 }

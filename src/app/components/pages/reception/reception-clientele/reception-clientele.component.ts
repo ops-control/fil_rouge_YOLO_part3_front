@@ -35,7 +35,7 @@ export class ReceptionClienteleComponent {
 
   creationReservation(reservation : Reservation) {
     //doit recevoir les informations de la modale, créer une reservation type à envoyer à l'API.
-    this.service.creation_reservation(reservation).subscribe();
+    this.service.creation_reservation(reservation).subscribe()
   }
 
 }
