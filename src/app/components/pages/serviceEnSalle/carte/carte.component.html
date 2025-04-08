@@ -1,23 +1,165 @@
-<div *ngIf="carte" class="carte-container">
-    <h1>{{ carte.nom }}</h1>
-    <p>{{ carte.description }}</p>
-  
-    <!-- Loop through the predefined categories -->
-    <div *ngFor="let category of categories" class="category-section">
-      <h2>{{ category.title }}</h2>
-      <div class="plats-list">
-        <div *ngFor="let plat of getPlatsByCategory(category.libelle)" class="plat-item">
-          <div class="plat-name">{{ plat.nom }}</div>
-          <div class="plat-description">{{ plat.description }}</div>
-          <div class="plat-prix">{{ plat.prix }} €</div>
-        </div>
-        <div *ngIf="getPlatsByCategory(category.libelle).length === 0" class="no-plats">
-          Aucun plat disponible dans cette catégorie.
+
+<div class="container px-4">
+  <div class="container bg-white rounded-2">
+    <div *ngIf="carte" class="py-3 px-2">
+      <div class="row align-items-start pb-2">
+        <div class="col-10 pt-1"><h2>Table n°</h2></div>
+        <div class="col-2 text-end fs-1 text-black">
+          <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </h1>
         </div>
       </div>
+        
+        <div *ngFor="let cat of categories" class="">
+          <div class="row align-items-center pe-3">
+            <div class="col-8 pt-1">
+              <div><h4>{{ cat.title }}</h4></div>
+            </div>
+            <div class="col-2 text-center text-black">
+              <div>Qté</div>
+            </div>
+            <div class="col-1 text-start text-black">
+              <div></div>
+            </div>
+            <div class="col-1 text-start text-black">
+              <div></div>
+            </div>
+          </div>
+          <div class="plats-list pb-3 pe-3">
+            <div *ngFor="let plat of getPlatsByCategorie(cat.libelle)">
+              <div class="row align-items-center">
+                <div class="col-8 pt-2">
+                  <div>{{ plat.nom }}</div>
+                </div>
+                <div class="col-2 text-center text-black">
+                  <div>0</div>
+                </div>
+                <div class="col-1 text-end text-black">
+                  <div class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#198754" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="col-1 text-end text-black">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-square-dotted" viewBox="0 0 16 16">
+                      <path d="M2.5 0q-.25 0-.487.048l.194.98A1.5 1.5 0 0 1 2.5 1h.458V0zm2.292 0h-.917v1h.917zm1.833 0h-.917v1h.917zm1.833 0h-.916v1h.916zm1.834 0h-.917v1h.917zm1.833 0h-.917v1h.917zM13.5 0h-.458v1h.458q.151 0 .293.029l.194-.981A2.5 2.5 0 0 0 13.5 0m2.079 1.11a2.5 2.5 0 0 0-.69-.689l-.556.831q.248.167.415.415l.83-.556zM1.11.421a2.5 2.5 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415zM16 2.5q0-.25-.048-.487l-.98.194q.027.141.028.293v.458h1zM.048 2.013A2.5 2.5 0 0 0 0 2.5v.458h1V2.5q0-.151.029-.293zM0 3.875v.917h1v-.917zm16 .917v-.917h-1v.917zM0 5.708v.917h1v-.917zm16 .917v-.917h-1v.917zM0 7.542v.916h1v-.916zm15 .916h1v-.916h-1zM0 9.375v.917h1v-.917zm16 .917v-.917h-1v.917zm-16 .916v.917h1v-.917zm16 .917v-.917h-1v.917zm-16 .917v.458q0 .25.048.487l.98-.194A1.5 1.5 0 0 1 1 13.5v-.458zm16 .458v-.458h-1v.458q0 .151-.029.293l.981.194Q16 13.75 16 13.5M.421 14.89c.183.272.417.506.69.689l.556-.831a1.5 1.5 0 0 1-.415-.415zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373Q2.25 16 2.5 16h.458v-1H2.5q-.151 0-.293-.029zM13.5 16q.25 0 .487-.048l-.194-.98A1.5 1.5 0 0 1 13.5 15h-.458v1zm-9.625 0h.917v-1h-.917zm1.833 0h.917v-1h-.917zm1.834 0h.916v-1h-.916zm1.833 0h.917v-1h-.917zm1.833 0h.917v-1h-.917zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="getPlatsByCategorie(cat.libelle).length === 0">
+              Aucun plat disponible dans cette catégorie.
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div *ngIf="!carte" class="loading">
+        Chargement de la carte...
+      </div>
     </div>
-  </div>
-  
-  <div *ngIf="!carte" class="loading">
-    Chargement de la carte...
-  </div>
+</div>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour Abdel :
+<br><br>
+
+<div class="container px-3">
+  <div class="container px-3 bg-white rounded-2">
+    <div *ngIf="carte" class="py-3">
+      <div class="row align-items-start pb-2">
+        <div class="col-10 pt-1"><h2>Commande n°</h2></div>
+        <div class="col-2 text-end fs-1 text-black">
+          <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </h1>
+        </div>
+        <div class="col-10 pb-2"><h3>Table n°</h3></div>
+
+      </div>
+        
+        <div *ngFor="let cat of categories" class="">
+          <div class="row align-items-center">
+            <div class="col-6 pt-1">
+              <div><h4>{{ cat.title }}</h4></div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>Qté</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>Prix</div>
+            </div>
+            <div class="col-2 text-end text-black">
+              <div>Total</div>
+            </div>
+          </div>
+          <div class="plats-list pb-3">
+            <div *ngFor="let plat of getPlatsByCategorie(cat.libelle)">
+              <div class="row align-items-center">
+                <div class="col-6 pt-1">
+                  <div>{{ plat.nom }}</div>
+                </div>
+                <div class="col-2 text-end text-black">
+                  <div>{{ plat.prix }} €</div>
+                </div>
+                <div class="col-2 text-end text-black">
+                  <div>{{ plat.prix }} €</div>
+                </div>
+                <div class="col-2 text-end text-black">
+                  <div>{{ plat.prix }} €</div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="getPlatsByCategorie(cat.libelle).length === 0">
+              Aucun plat disponible dans cette catégorie.
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-6 pt-1">
+            <div><h4>TOTAL</h4></div>
+          </div>
+          <div class="col-2 text-end text-black">
+            <div>HT</div>
+          </div>
+          <div class="col-2 text-end text-black">
+            <div>TVA</div>
+          </div>
+          <div class="col-2 text-end text-black">
+            <div>TTC</div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-6 pt-1">
+            <div>Total de la commande</div>
+          </div>
+          <div class="col-2 text-end text-black">
+            <div>xx €</div>
+          </div>
+          <div class="col-2 text-end text-black">
+            <div>5.5 %</div>
+          </div>
+          <div class="col-2 text-end text-black">
+            <div>yy €</div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div *ngIf="!carte" class="loading">
+        Chargement de la carte...
+      </div>
+    </div>
+</div>

@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
 export class CarteComponent implements OnInit {
   carte: Carte | undefined;
   
-  // Define the order of categories and their libelles
   categories = [
     { title: 'Entrées', libelle: 'Entrées' },
     { title: 'Pizzas base tomate', libelle: 'Pizzas base tomate' },
@@ -30,7 +29,7 @@ export class CarteComponent implements OnInit {
     });
   }
 
-  getPlatsByCategory(libelle: string): Plat[] {
+  getPlatsByCategorie(libelle: string): Plat[] {
     if (!this.carte || !this.carte.plats) {
       return [];
     }
