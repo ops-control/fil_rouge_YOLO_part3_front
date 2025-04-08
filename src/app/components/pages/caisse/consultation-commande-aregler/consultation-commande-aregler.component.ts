@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CaisseService } from '../../../../services/caisse.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Commande } from '../../../../interfaces/commande';
 import * as bootstrap from 'bootstrap';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { LigneCommande } from '../../../../interfaces/ligneCommande';
 
 @Component({
   selector: 'app-consultation-commande-aregler',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule,],
   templateUrl: './consultation-commande-aregler.component.html',
   styleUrl: './consultation-commande-aregler.component.css'
 })
