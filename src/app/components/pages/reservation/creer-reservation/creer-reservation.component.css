@@ -1,0 +1,22 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.text-danger {
+    font-size: 0.875em;
+}
+
+.btn-outline-success {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+}

@@ -1,13 +1,15 @@
-<h3>Réservations du jour :</h3>
-<div>
-    <p *ngIf="todayReservations.length == 0">Il n'y a aucune reservation pour aujourd'hui.</p>
-    <app-item-reservation *ngFor="let resa of todayReservations" [reservation]="resa"></app-item-reservation>
-</div>
+<div class="container mt-4">
+  <h3 class="mb-4">Réservations du jour :</h3>
+  <div>
+    <p *ngIf="todayReservations.length == 0" class="text-danger">Il n'y a aucune reservation pour aujourd'hui.</p>
+    <app-item-reservation *ngFor="let resa of todayReservations" [reservation]="resa" [tableNumber]="getTableNumberByReservation(resa)"></app-item-reservation>
+  </div>
 
-<h3>Réservations à venir :</h3>
-<div>
-    <p *ngIf="upcomingReservations.length == 0">Il n'y a aucune reservation à venir.</p>
-    <app-item-reservation *ngFor="let resa of upcomingReservations" [reservation]="resa"></app-item-reservation>
-</div>
-<button type="button" class="btn btn-success" (click)="createReservation()">Ajouter une réservation</button>
+  <h3 class="mb-4 mt-5">Réservations à venir :</h3>
+  <div>
+    <p *ngIf="upcomingReservations.length == 0" class="text-danger">Il n'y a aucune reservation à venir.</p>
+    <app-item-reservation *ngFor="let resa of upcomingReservations" [reservation]="resa" [tableNumber]="getTableNumberByReservation(resa)"></app-item-reservation>
+  </div>
 
+  <button type="button" class="btn btn-success mt-4" (click)="createReservation()">Ajouter une réservation</button>
+</div>

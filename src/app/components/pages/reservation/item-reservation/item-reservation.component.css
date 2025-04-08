@@ -1,0 +1,18 @@
+.reservation-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee2e6;
+}
+
+.reservation-date, .reservation-client, .reservation-people, .reservation-table, .reservation-status {
+    font-size: 1em;
+    color: #495057;
+}
+
+.reservation-client {
+    font-weight: bold;
+}
+
+.reservation-status {
+    font-style: italic;
+    color: #28a745;
+}
