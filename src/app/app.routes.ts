@@ -8,7 +8,7 @@ import { ReceptionClienteleComponent } from './components/pages/reception/recept
 
 export const routes: Routes = [
     { path: "", component: AccueilComponent},
-    { path: "tables/occupees", component: ListeTablesOccupeesComponent},
+    { path: "service", component: ListeTablesOccupeesComponent},
     { path: "reservations", component: ReservationComponent},
     { path: "reservations/creer-resa", component: CreerReservationComponent},
     { path: "carte", component: CarteComponent},
