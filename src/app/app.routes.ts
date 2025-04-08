@@ -8,9 +8,10 @@ import { CarteComponent } from './components/pages/serviceEnSalle/carte/carte.co
 import { ReceptionClienteleComponent } from './components/pages/reception/reception-clientele/reception-clientele.component';
 import { ListeCommandesServiesComponent } from './components/pages/caisse/liste-commandes-servies/liste-commandes-servies.component';
 import { ConsultationCommandeAReglerComponent } from './components/pages/caisse/consultation-commande-aregler/consultation-commande-aregler.component';
+import { ConnexionComponent } from './components/pages/connexion/connexion.component';
 
 export const routes: Routes = [
-    { path: "", component: AccueilComponent},
+    { path: "accueil", component: AccueilComponent},
     { path: "service", component: ListeTablesOccupeesComponent},
     { path: "reservations", component: ReservationComponent},
     { path: "reservations/creer-resa", component: CreerReservationComponent},
@@ -18,4 +19,5 @@ export const routes: Routes = [
     { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
     { path: "commandes", component: ListeCommandesServiesComponent},
     { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent }
+
 ];
