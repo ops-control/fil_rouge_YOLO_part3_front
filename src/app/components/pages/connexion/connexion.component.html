@@ -1,1 +1,23 @@
 
+<div class="container d-flex justify-content-center mt-5">
+    <h2 class="display-4 fw-bold lh-1 pb-3">Connectez-vous</h2>
+</div>
+
+<div class="container d-flex justify-content-center mt-5">
+    <form [formGroup]="form" class="row g-3">
+        <div class="col-md-12 form-field">
+            <label class="form-label">Veuillez saisir votre identifiant :</label>
+            <input class="form-control" type="text" name="login" formControlName="login" placeholder="Votre identifiant" required>
+        </div>
+        <div class="col-md-12 form-field">
+            <label class="form-label">Veuillez saisir votre mot de passe :</label>
+            <input class="form-control" type="password" name="password" formControlName="password" placeholder="Votre mot de passe" required>
+        </div>
+        <div class="col-12 pt-3 form-buttons">
+            <button (click)="connecter()" class="w-100 btn btn-success btn-lg rounded-pill">Se connecter</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+</div>
