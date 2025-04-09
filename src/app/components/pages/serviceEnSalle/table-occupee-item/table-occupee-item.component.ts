@@ -3,6 +3,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TableOccupee } from '../../../../interfaces/table-occupee';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommandeCreationService } from '../../../../services/commande-creation.service';
+import { ReservationService } from '../../../../services/reservation.service';
+import { Reservation } from '../../../../interfaces/reservation';
+import { Commande } from '../../../../interfaces/commande';
+import { NouvelleCommande } from '../../../../interfaces/nouvelle-commande';
 
 @Component({
   selector: 'app-table-occupee-item',
@@ -16,8 +21,15 @@ export class TableOccupeeItemComponent {
   @Output()
   emitTable : EventEmitter<TableOccupee> = new EventEmitter<TableOccupee>();
 
-  constructor(private router: Router){
-    
+  private reservation?: Reservation;
+  private commande?: NouvelleCommande;
+
+  constructor(
+    private commandeCreationService: CommandeCreationService,
+    private reservationService: ReservationService,
+    private router: Router
+  ){
+    this.reservationService = reservationService;
   }
   
   selectionnerTable(tableOccupee : TableOccupee) {
@@ -25,11 +37,30 @@ export class TableOccupeeItemComponent {
   }
   
   creerCommande(tableOccupee: TableOccupee) {
-    console.log(tableOccupee.numeroTable)
-    this.router.navigate(['/carte'], {
-      state: { table: tableOccupee }
-    });
+    console.log(tableOccupee.idCommande);
+    this.reservationService.getReservationByIdTableRestaurant(tableOccupee.idTableRestaurant)
+      .subscribe({
+        next: (response) => {
+          this.reservation = response;
+  
+          if (this.reservation?.idReservation !== undefined) {
+            this.commandeCreationService.creationCommande(this.reservation, tableOccupee)
+              .subscribe({
+                next: (commandeResponse) => {
+                  this.commande = commandeResponse;
+                  tableOccupee.idCommande = this.commande.idCommande;
+                  console.log(tableOccupee.idCommande);
+                  this.router.navigate(['/carte'], {
+                    state: {
+                      table: tableOccupee,
+                      commande: this.commande
+                    }
+                  });
+                }
+              });
+          }
+        }
+      });
   }
-
 
 }
