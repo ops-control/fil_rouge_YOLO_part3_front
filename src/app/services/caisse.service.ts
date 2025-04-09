@@ -11,6 +11,8 @@ export class CaisseService {
   private BASE_URL="http://localhost:8080/commandes/2/statut/servie";
   private BASE_URL1="http://localhost:8080/commandes";
   private BASE_URL2="http://localhost:8080/commandes/1/statut/passee";
+  private BASE_URL3="http://localhost:8080/reservations";
+
 
 
 
@@ -36,6 +38,12 @@ export class CaisseService {
     putCommandePrete(idCommande : number) {
       const headers = new HttpHeaders({'Content-Type' : 'application/json'});
       return this.client.put<Commande>(`${this.BASE_URL1}/${idCommande}/prete`, idCommande, {headers});
+    }
+
+    deleteCommande(idReservation?:number){
+      const headers = new HttpHeaders({'Content-Type' : 'application/json'});
+      return this.client.delete<Commande>(`${this.BASE_URL3}/${idReservation}`);
+
     }
 
 

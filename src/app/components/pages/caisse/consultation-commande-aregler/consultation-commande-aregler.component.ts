@@ -76,6 +76,18 @@ export class ConsultationCommandeAReglerComponent {
      }
    }
 
+   putCommandeAndDelete(idCommande: number){
+    if (!idCommande || idCommande <= 0) {
+      console.warn('ID de commande invalide :', idCommande);
+      return; }
+      this.caisseService.putCommande(idCommande).subscribe(response => {
+        console.log('Commande mise à jour avec succès :', response);
+        this.showToast();
+      });
+      this.caisseService.deleteCommande(this.commande?.idReservation).subscribe(response => {
+        console.log('Commande mise à jour avec succès :', response);});
+  }
+
   putCommande(idCommande: number){
     if (!idCommande || idCommande <= 0) {
       console.warn('ID de commande invalide :', idCommande);

@@ -5,6 +5,7 @@ export interface Commande {
     nomClient:string;
     nbPersonnes:number;
     numeroTable:number;
+    idReservation:number;
     lignes:LigneCommande[];
 
 }
