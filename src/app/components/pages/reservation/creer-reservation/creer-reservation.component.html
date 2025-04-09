@@ -1,17 +1,35 @@
-<h3>Nouvelle Réservation</h3>
-<div class="card">
-    <form [formGroup]="formNewReservation" (submit)="saveReservation()">
-        <div>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" formControlName="username">
-            <span *ngIf="display_error('username', 'required')"> Champ requis</span>
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" formControlName="password">
-            <span *ngIf="display_error('password', 'required')"> Champ requis</span>
-            <span *ngIf="display_error('password', 'minlength')"> Le mot de passe doit faire au moins 8 caractères</span>
-        </div>
-        <button class="btn btn-outline-success" type="submit" (click)="saveReservation()" [disabled]="!formNewReservation.valid">Enregistrer</button>
-    </form>
+<div class="container mt-5">
+    <h3 class="mb-4">Nouvelle Réservation</h3>
+    <div class="card p-4">
+        <form [formGroup]="formNewReservation" (ngSubmit)="saveReservation()">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" formControlName="date" class="form-control">
+                <div *ngIf="display_error('date', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="heure" class="form-label">Heure</label>
+                <input type="time" id="heure" formControlName="heure" class="form-control">
+                <div *ngIf="display_error('heure', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="nbPersonnes" class="form-label">Nombre de personnes</label>
+                <input type="number" id="nbPersonnes" formControlName="nbPersonnes" class="form-control">
+                <div *ngIf="display_error('nbPersonnes', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="idTableRestaurant" class="form-label">Table</label>
+                <select id="idTableRestaurant" formControlName="idTableRestaurant" class="form-select">
+                    <option value="">Sélectionnez une table disponible</option>
+                    <option *ngFor="let table of tablesNonOccupees" [value]="table.idTableRestaurant">
+                        Table {{ table.numeroTable }} - {{ table.nbPlaces }} places
+                    </option>
+                </select>
+                <div *ngIf="display_error('idTableRestaurant', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <button class="btn btn-outline-success mt-3" type="submit" [disabled]="!formNewReservation.valid">
+                Enregistrer
+            </button>
+        </form>
+    </div>
 </div>

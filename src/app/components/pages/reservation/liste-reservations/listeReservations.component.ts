@@ -4,6 +4,9 @@ import { ReservationService } from '../../../../services/reservation.service';
 import { CommonModule } from '@angular/common';
 import { ItemReservationComponent } from '../item-reservation/item-reservation.component';
 import { Router } from '@angular/router';
+import { TableNonOccuppesService } from '../../../../services/tableNonOccupees.service';
+import { TableOccupee } from '../../../../interfaces/table-occupee';
+import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
 
 @Component({
   selector: 'app-reservation',
@@ -13,29 +16,38 @@ import { Router } from '@angular/router';
 })
 export class ReservationComponent implements OnInit {
   reservations : Reservation[] = [];
+  tablesNonOccupees : TableNonOccupees[] = [];
   todayReservations: Reservation[] = [];
   upcomingReservations: Reservation[] = [];
 
   constructor(
-    private service: ReservationService, 
+    private serviceReservation: ReservationService,
+    private serviceTableNonOccupee: TableNonOccuppesService,
     private router: Router
-  ) {}
-
-  ngOnInit(){
-    this.service.getReservations().subscribe(response => {
+  ) {
+    this.serviceReservation.getReservations().subscribe(response => {
       this.reservations = response;
       this.filterReservations();
     });
   }
 
+  ngOnInit(){
+    this.serviceTableNonOccupee.get_tables_non_occupees(1).subscribe(response => {
+      this.tablesNonOccupees = response;
+    });
+  }
+
+  getTableNumberByReservation(reservation: Reservation): number | undefined {
+    const tableNonOccupee = this.tablesNonOccupees.find(table => table.idRestaurant === reservation.idRestaurant);
+    return tableNonOccupee ? tableNonOccupee.numeroTable : undefined;
+  }
+
   filterReservations() {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // réinitialiser la partie horaire pour comparer uniquement les dates
-    console.log(today);
     
     this.todayReservations = this.reservations.filter(resa => {
       const reservationDate = new Date(resa.horaireReservation);
-      console.log(reservationDate);
       return reservationDate.toDateString() === today.toDateString();
     });
 

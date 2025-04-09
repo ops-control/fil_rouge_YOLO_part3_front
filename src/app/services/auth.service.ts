@@ -11,10 +11,4 @@ export class AuthService {
   connexion(login: string, password: string) {
     return this.http.post<any>('http://localhost:8080/auth', { login, password });
   }
-
-  logout() {
-      localStorage.removeItem("id_token");
-      localStorage.removeItem("expires_at");
-  }
-
 }

@@ -1,2 +1,6 @@
-<input *ngIf="tableOccupee?.idCommande != null" class="btn btn-danger w-100 px-5 py-3 mb-4 align" type="submit" value={{tableOccupee?.numeroTable}}>
-<input *ngIf="tableOccupee?.idCommande == null" class="btn btn-success w-100 px-5 py-3 mb-4 align" type="submit" value={{tableOccupee?.numeroTable}}>
+<button *ngIf="tableOccupee?.idCommande != null" class="btn btn-danger w-100 py-3 mb-4" (click)="selectionnerTable(tableOccupee!)">
+    {{tableOccupee?.numeroTable}}
+</button>
+<button *ngIf="tableOccupee?.idCommande == null" class="btn btn-success w-100 py-3 mb-4" (click)="creerCommande(tableOccupee!)">
+    {{tableOccupee?.numeroTable}}
+</button>

@@ -1,1 +1,22 @@
-<p>modal-modification-statut-commande-en-servie works!</p>
+<div class="modal fade show" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true" *ngIf="table">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" (click)="fermerModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+          <div class="row g-3 py-3">
+            <div class="col-12">
+              <h2 class="card-text pb-2 text-center">Passer la table n°{{ table.numeroTable }} en servie</h2>
+            </div>
+            <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+              <button (click)="confirmer()" class="btn btn-success btn-lg rounded-pill px-4 mx-2">Confirmer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

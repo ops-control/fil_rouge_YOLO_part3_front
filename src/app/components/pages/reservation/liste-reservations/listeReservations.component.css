@@ -1,0 +1,35 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+h3 {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.text-danger {
+    font-size: 1.1em;
+}
+
+.app-item-reservation {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.app-item-reservation p {
+    margin: 0;
+    font-size: 1em;
+    color: #495057;
+}
+
+.btn-success {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}

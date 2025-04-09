@@ -1,0 +1,27 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+h4 {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.text-danger {
+    font-size: 1.1em;
+}
+
+.app-table-non-occupee-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-table-non-occupee-item p {
+    margin: 0;
+    font-size: 1em;
+    color: #495057;
+}

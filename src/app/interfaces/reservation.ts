@@ -1,10 +1,12 @@
+import { TableNonOccupees } from "./table-non-occupees";
 import { Utilisateur } from "./utilisateur";
 
 export interface Reservation {
-    idReservation: number;
+    idReservation?: number;
     nbPersonne: number;
     statut: string;
     horaireReservation: Date;
     utilisateur: Utilisateur;
-    idTableRestaurant: number;
+    idRestaurant: number;
+    idTableRestaurant : number;
 }
