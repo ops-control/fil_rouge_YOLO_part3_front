@@ -31,7 +31,7 @@ export class ConnexionComponent {
       .subscribe({
         next: response => {
           localStorage.setItem('Jwt', response.token);
-          this.router.navigate(['/reservations']);
+          this.router.navigate(['/accueil']);
         },
         error: () => {
           this.errorMessage = "Identifiant ou mot de passe incorrect.";
