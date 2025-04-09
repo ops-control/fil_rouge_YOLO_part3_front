@@ -15,6 +15,10 @@ export class ReservationService {
     return this.client.get<Reservation[]>(this.BASE_URL + "/" + this.idresto);
   }
 
+  getReservationByIdTableRestaurant(idTable: number) {
+    return this.client.get<Reservation>(this.BASE_URL + "/table/" + idTable);
+  }  
+
   addReservation(reservation : Reservation) {
     const headers = new HttpHeaders({'Content-Type' : 'application/json'});
     return this.client.post<Reservation>(this.BASE_URL, reservation, {headers});
