@@ -1,28 +1,45 @@
 <div class="container mt-5">
     <h3 class="mb-4">Nouvelle Réservation</h3>
     <div class="card p-4">
-        <form [formGroup]="formNewReservation" (submit)="saveReservation()">
+        <form [formGroup]="formNewReservation" (ngSubmit)="saveReservation()">
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" id="date" name="date" formControlName="date" class="form-control">
-                <div *ngIf="display_error('dateEtHoraire', 'required')" class="text-danger">Champ requis</div>
+                <input type="date" id="date" formControlName="date" class="form-control">
+                <div *ngIf="display_error('date', 'required')" class="text-danger">Champ requis</div>
             </div>
             <div class="mb-3">
                 <label for="heure" class="form-label">Heure</label>
-                <input type="time" id="heure" name="heure" formControlName="heure" class="form-control">
+                <input type="time" id="heure" formControlName="heure" class="form-control">
                 <div *ngIf="display_error('heure', 'required')" class="text-danger">Champ requis</div>
             </div>
             <div class="mb-3">
                 <label for="nbPersonnes" class="form-label">Nombre de personnes</label>
-                <input type="number" id="nbPersonnes" name="nbPersonnes" formControlName="nbPersonnes" class="form-control">
+                <input type="number" id="nbPersonnes" formControlName="nbPersonnes" class="form-control">
                 <div *ngIf="display_error('nbPersonnes', 'required')" class="text-danger">Champ requis</div>
             </div>
             <div class="mb-3">
-                <label for="nameClient" class="form-label">Nom du client</label>
-                <input type="text" id="nameClient" name="nameClient" class="form-control">
+                <label for="idTableRestaurant" class="form-label">Table</label>
+                <select id="idTableRestaurant" formControlName="idTableRestaurant" class="form-select">
+                    <option value="">Sélectionnez une table disponible</option>
+                    <option *ngFor="let table of tablesNonOccupees" [value]="table.idTableRestaurant">
+                        Table {{ table.numeroTable }} - {{ table.nbPlaces }} places
+                    </option>
+                </select>
+                <div *ngIf="display_error('idTableRestaurant', 'required')" class="text-danger">Champ requis</div>
             </div>
-            <app-liste-tables-non-occupees></app-liste-tables-non-occupees>
-            <button class="btn btn-outline-success mt-3" type="submit" (click)="saveReservation()" [disabled]="!formNewReservation.valid">Enregistrer</button>
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" id="nom" formControlName="nom" class="form-control">
+                <div *ngIf="display_error('nom', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" id="prenom" formControlName="prenom" class="form-control">
+                <div *ngIf="display_error('prenom', 'required')" class="text-danger">Champ requis</div>
+            </div>
+            <button class="btn btn-outline-success mt-3" type="submit" [disabled]="!formNewReservation.valid">
+                Enregistrer
+            </button>
         </form>
     </div>
 </div>
