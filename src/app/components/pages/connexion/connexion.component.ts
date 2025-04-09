@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { Utilisateur } from '../../../interfaces/utilisateur';
 
 @Component({
   selector: 'app-connexion',
@@ -13,6 +14,7 @@ import { AuthService } from '../../../services/auth.service';
 export class ConnexionComponent {
   form : FormGroup;
   errorMessage: string | null = null;
+  utilisateur : Utilisateur = {'prenom': "valentin", 'nom' : "Charrier" };
 
   constructor(private fb : FormBuilder,
               private router : Router,
@@ -31,6 +33,7 @@ export class ConnexionComponent {
       .subscribe({
         next: response => {
           localStorage.setItem('Jwt', response.token);
+          sessionStorage.setItem("utilisateur", this.utilisateur.prenom)
           this.router.navigate(['/accueil']);
         },
         error: () => {
