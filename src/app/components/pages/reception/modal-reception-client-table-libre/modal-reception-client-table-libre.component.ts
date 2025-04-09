@@ -29,7 +29,7 @@ export class ModalReceptionClientTableLibreComponent {
     const nouvelleReservation: Reservation = {
       idReservation : 0,
       nbPersonne: this.nbPers,
-      statut: 'confirmée',
+      statut: 'arrivée',
       horaireReservation: now,
       utilisateur: {
         idUtilisateur: 1,

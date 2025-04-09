@@ -1,6 +1,6 @@
-<button *ngIf="tableOccupee?.idCommande != null" class="btn btn-danger w-100 py-3 mb-4">
+<button *ngIf="tableOccupee?.idCommande != null" class="btn btn-danger w-100 py-3 mb-4" (click)="selectionnerTable(tableOccupee!)">
     {{tableOccupee?.numeroTable}}
 </button>
-<button *ngIf="tableOccupee?.idCommande == null" [routerLink]="['/carte']" routerLinkActive="active" class="btn btn-success w-100 py-3 mb-4">
+<button *ngIf="tableOccupee?.idCommande == null" class="btn btn-success w-100 py-3 mb-4" (click)="creerCommande(tableOccupee!)">
     {{tableOccupee?.numeroTable}}
 </button>
