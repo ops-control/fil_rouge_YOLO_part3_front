@@ -1,3 +1,7 @@
+<div class="container d-flex justify-content-center mt-5">
+    <h2 class="display-4 fw-bold lh-1 pb-3">Accueil client</h2>
+</div>
+
 <div class="container d-flex justify-content-center mb-4" *ngFor="let table of tables_non_occupees">
     <div class="card border btn btn-success rounded-3 mx-2" style="width: 100%;" (click)="selectionnerTable(table)">
         <h3 class="card-text px-0 m-0 py-3 text-center">Table n° {{ table.numeroTable }}</h3>
