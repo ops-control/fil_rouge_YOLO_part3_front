@@ -41,16 +41,14 @@ export class CreerReservationComponent {
   saveReservation() {
     if (this.formNewReservation.valid) {
       const horaireReservation = new Date(`${this.formNewReservation.value.date}T${this.formNewReservation.value.heure}`);
-      
-      
       const reservation: Reservation = {
         nbPersonne: this.formNewReservation.value.nbPersonnes,
         statut: 'confirmée',
         horaireReservation: horaireReservation,
         utilisateur: {
           idUtilisateur: 1, // Utilisateur temporaire pour l'exemple
-          nom: 'Temp',
-          prenom: 'User',
+          nom: this.formNewReservation.value.nom,
+          prenom: '',
           login: '',
           password: ''
         },
