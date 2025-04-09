@@ -8,7 +8,6 @@ import { CarteComponent } from './components/pages/serviceEnSalle/carte/carte.co
 import { ReceptionClienteleComponent } from './components/pages/reception/reception-clientele/reception-clientele.component';
 import { ListeCommandesServiesComponent } from './components/pages/caisse/liste-commandes-servies/liste-commandes-servies.component';
 import { ConsultationCommandeAReglerComponent } from './components/pages/caisse/consultation-commande-aregler/consultation-commande-aregler.component';
-import { ConnexionComponent } from './components/pages/connexion/connexion.component';
 import { ListeCommandesPasseesComponent } from './components/pages/cuisine/liste-commandes-passees/liste-commandes-passees.component';
 
 export const routes: Routes = [

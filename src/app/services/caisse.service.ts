@@ -19,8 +19,6 @@ export class CaisseService {
   constructor(private client : HttpClient ) { }
   getCommandePassees(){
     return this.client.get<Commande[]>(this.BASE_URL2);
-
-
   }
 
   getCommande( ){
@@ -30,9 +28,14 @@ export class CaisseService {
       return this.client.get<CommandeServie>(`${this.BASE_URL1}/${idCommande}`);
     }
 
-    putCommande(idCommande : Number) {
+    putCommande(idCommande : number) {
       const headers = new HttpHeaders({'Content-Type' : 'application/json'});
       return this.client.put<Commande>(`${this.BASE_URL1}/${idCommande}/payer`, idCommande, {headers});
+    }
+
+    putCommandePrete(idCommande : number) {
+      const headers = new HttpHeaders({'Content-Type' : 'application/json'});
+      return this.client.put<Commande>(`${this.BASE_URL1}/${idCommande}/prete`, idCommande, {headers});
     }
 
 
