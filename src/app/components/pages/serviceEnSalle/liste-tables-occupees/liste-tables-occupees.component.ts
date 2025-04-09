@@ -5,7 +5,6 @@ import { TableOccupeeItemComponent } from "../table-occupee-item/table-occupee-i
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalModificationStatutCommandeEnServieComponent } from "../modal-modification-statut-commande-en-servie/modal-modification-statut-commande-en-servie.component";
-import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
 import { CommandeCreationService } from '../../../../services/commande-creation.service';
 import { Observer } from '../../../../interfaces/observer';
 

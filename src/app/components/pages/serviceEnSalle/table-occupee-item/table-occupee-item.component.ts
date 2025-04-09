@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TableOccupee } from '../../../../interfaces/table-occupee';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,8 +16,20 @@ export class TableOccupeeItemComponent {
   @Output()
   emitTable : EventEmitter<TableOccupee> = new EventEmitter<TableOccupee>();
 
+  constructor(private router: Router){
+    
+  }
+  
   selectionnerTable(tableOccupee : TableOccupee) {
     this.emitTable.emit(tableOccupee);
   }
+  
+  creerCommande(tableOccupee: TableOccupee) {
+    console.log(tableOccupee.numeroTable)
+    this.router.navigate(['/carte'], {
+      state: { table: tableOccupee }
+    });
+  }
+
 
 }

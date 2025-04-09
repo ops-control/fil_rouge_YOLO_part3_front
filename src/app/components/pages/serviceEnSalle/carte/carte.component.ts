@@ -4,7 +4,8 @@ import { Carte } from '../../../../interfaces/carte';
 import { Plat } from '../../../../interfaces/plat';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { TablesOccupeesService } from '../../../../services/tables-occupees.service';
+import { Router } from '@angular/router';
+import { TableOccupee } from '../../../../interfaces/table-occupee';
 
 @Component({
   selector: 'app-carte',
@@ -15,6 +16,7 @@ import { TablesOccupeesService } from '../../../../services/tables-occupees.serv
 export class CarteComponent implements OnInit {
   carte: Carte | undefined;
   idTableRestaurant?: number;
+  table?: TableOccupee;
   
   categories = [
     { title: 'Entrées', libelle: 'Entrées' },
@@ -24,13 +26,14 @@ export class CarteComponent implements OnInit {
     { title: 'Boissons', libelle: 'Boissons' }
   ];
 
-  constructor(private carteService: CarteService, private route: ActivatedRoute) {}
+  constructor(private carteService: CarteService, private route: ActivatedRoute, private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras?.state) {
+      this.table = navigation.extras.state['table'] as TableOccupee;
+    }
+  }
 
   ngOnInit(): void {
-    const idTableRestaurant = +this.route.snapshot.paramMap.get('id')!;
-    if (idTableRestaurant) {
-      this.idTableRestaurant = idTableRestaurant;
-    }
     this.carteService.getCarte().subscribe(response => {
       this.carte = response;
     });
