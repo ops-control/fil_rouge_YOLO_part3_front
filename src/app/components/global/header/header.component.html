@@ -9,7 +9,7 @@
       </div> 
       -->
       <div class="col-8 d-flex justify-content-end align-items-center gap-2">
-        <a class="link-secondary text-decoration-none text-black" [routerLink]="['/accueil']" aria-label="Search">Bonjour utilisateur !</a>
+        <a class="link-secondary text-decoration-none text-black" [routerLink]="['/accueil']" aria-label="Search" *ngIf="estConnecte()">Bonjour {{get_prenom}} !</a>
          <a class="text-decoration-none text-black" href="#"><i class="bi bi-person-circle user-icon"></i></a>
       </div>
     </div>
