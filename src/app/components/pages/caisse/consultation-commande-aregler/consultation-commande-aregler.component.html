@@ -2,7 +2,7 @@
     <div class="container px-3 bg-white rounded-2">
       <div *ngIf="commande" class="py-3">
         <div class="row align-items-start pb-2">
-          <div class="col-10 pt-1"><h2>Commande n°</h2></div>
+          <div class="col-10 pt-1"><h2>Facture</h2></div>
           <div class="col-2 text-end fs-1 text-black">
             <h1>
               <a [routerLink]="['/commandes']" routerLinkActive="active">
@@ -12,7 +12,7 @@
               </svg></a>
             </h1>
           </div>
-          <div class="col-10 pb-2"><h3>Table n°</h3></div>
+          <div class="col-10 pb-2"><h3>Table n° {{commande.numeroTable}}</h3></div>
   
         </div>
           
@@ -88,16 +88,11 @@
         <div *ngIf="!commande" class="loading">
           Chargement de la carte...
         </div>
+        <div class=" row align-items-center mb-2  p-0 rounded-5" >
+          <button class="btn btn-success" type="button"  (click)="putCommande(commande?.idCommande ?? 0)"id="liveToastBtn">  Confirmer le payment </button>
+      </div>
       </div>
   </div>
-
-
-
-    <div class="d-grid gap-2 col-5 mx-auto" >
-        <button class="btn btn-success" type="button"  (click)="putCommande(commande?.idCommande ?? 0)"id="liveToastBtn">  Confirmer le payment </button>
-    </div>
-
-
 
 
     <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">        

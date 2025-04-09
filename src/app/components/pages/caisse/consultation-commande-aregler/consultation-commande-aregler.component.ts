@@ -31,6 +31,7 @@ export class ConsultationCommandeAReglerComponent {
       this.caisseService.getCommandeById(this.idCommande).subscribe({
         next: (response) => {
           this.commande = response as Commande;
+          console.log(this.commande.lignes)
         },
         error: (err) => {
           console.error('Erreur lors de la récupération de la commande :', err);
@@ -42,6 +43,7 @@ export class ConsultationCommandeAReglerComponent {
 
   getCategorie(): string[] {
     if (!this.commande || !this.commande.lignes) {
+      console.log
       return [];
     }
     for (const ligne of this.commande?.lignes ?? []) {
