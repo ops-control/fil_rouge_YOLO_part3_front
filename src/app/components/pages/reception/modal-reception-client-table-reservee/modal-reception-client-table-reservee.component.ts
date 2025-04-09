@@ -11,7 +11,7 @@ import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
   styleUrl: './modal-reception-client-table-reservee.component.css'
 })
 export class ModalReceptionClientTableReserveeComponent {
-  nbPers = 0;
+  nbPers = this.table?.reservations?.[0]?.nbPersonne;
 
   @Input()
   table ?: TableNonOccupees;
@@ -19,8 +19,15 @@ export class ModalReceptionClientTableReserveeComponent {
   @Output()
   closeModal: EventEmitter<void> = new EventEmitter<void>();
 
+  @Output()  // <-- Ajoute cette ligne
+  modifierReservation: EventEmitter<{ id: number, statut: string }> = new EventEmitter();
+
   confirmer() {
-    // doit mettre à jour le statut de la réservation sur la table sélectionnée en "arrivée"
+    const idReservation = this.table?.reservations?.[0]?.idReservation;
+    if (!idReservation) 
+      return ;
+
+    this.modifierReservation.emit({ id: idReservation, statut: 'arrivée' });
     this.closeModal.emit();
   }
 
