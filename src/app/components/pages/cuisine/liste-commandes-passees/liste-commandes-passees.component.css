@@ -1,7 +1,9 @@
-.clickable-div {
+.hover-effect {
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
   }
-  .clickable-div:hover {
-    background-color: #e9ecef; /* effet visuel au survol */
+  .hover-effect:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: scale(1.01);
   }

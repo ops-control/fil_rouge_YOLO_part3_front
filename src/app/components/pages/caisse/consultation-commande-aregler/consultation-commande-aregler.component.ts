@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CaisseService } from '../../../../services/caisse.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Commande } from '../../../../interfaces/commande';
-// import * as bootstrap from 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import { CommonModule } from '@angular/common';
 import { LigneCommande } from '../../../../interfaces/ligneCommande';
 
@@ -31,7 +31,6 @@ export class ConsultationCommandeAReglerComponent {
       this.caisseService.getCommandeById(this.idCommande).subscribe({
         next: (response) => {
           this.commande = response as Commande;
-          console.log(this.commande.lignes)
         },
         error: (err) => {
           console.error('Erreur lors de la récupération de la commande :', err);
@@ -70,12 +69,12 @@ export class ConsultationCommandeAReglerComponent {
       return somme;
     }
 
-  // ngAfterViewInit(): void {
-  //   const toastElement = document.getElementById('liveToast');
-  //   if (toastElement) {
-  //     this.toastEl = new bootstrap.Toast(toastElement);
-  //   }
-  // }
+   ngAfterViewInit(): void {
+     const toastElement = document.getElementById('liveToast');
+     if (toastElement) {
+       this.toastEl = new bootstrap.Toast(toastElement);
+     }
+   }
 
   putCommande(idCommande: number){
     if (!idCommande || idCommande <= 0) {

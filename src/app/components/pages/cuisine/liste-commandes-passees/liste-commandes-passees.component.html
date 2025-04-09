@@ -1,5 +1,5 @@
 <div class="container px-3" *ngFor="let cmd of commandes">
-    <div class="container px-3 bg-white rounded-2 mb-4 clickable-div" (click)="ouvrirModale(cmd.idCommande)" >
+    <div class="container px-3 bg-white rounded-2 mb-4 hover-effect clickable-div" (click)="ouvrirModale(cmd.idCommande)" >
         <div *ngIf="cmd" class="py-3">
             <div class="row align-items-start pb-2">
                 <div class="col-10 pt-1">
