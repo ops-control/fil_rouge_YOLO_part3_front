@@ -13,8 +13,8 @@ import { ConnexionComponent } from './components/pages/connexion/connexion.compo
 export const routes: Routes = [
     { path: "accueil", component: AccueilComponent},
     { path: "service", component: ListeTablesOccupeesComponent},
-    { path: "reservations", component: ReservationComponent},
-    { path: "reservations/creer-resa", component: CreerReservationComponent},
+    { path: "reservations/:id", component: ReservationComponent},
+    { path: "creer-resa/:id", component: CreerReservationComponent},
     { path: "carte", component: CarteComponent},
     { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
     { path: "commandes", component: ListeCommandesServiesComponent},

@@ -11,5 +11,5 @@
     <app-item-reservation *ngFor="let resa of upcomingReservations" [reservation]="resa" [tableNumber]="getTableNumberByReservation(resa)"></app-item-reservation>
   </div>
 
-  <button type="button" class="btn btn-success mt-4" (click)="createReservation()">Ajouter une réservation</button>
+  <button type="button" class="btn btn-success mt-4" [routerLink]="['/creer-resa', idRestaurant]">Ajouter une réservation</button>
 </div>

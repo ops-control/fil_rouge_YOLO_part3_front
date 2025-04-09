@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReservationService } from '../../../../services/reservation.service';
 import { TableNonOccuppesService } from '../../../../services/tableNonOccupees.service';
 import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
@@ -12,21 +12,24 @@ import { Utilisateur } from '../../../../interfaces/utilisateur';
 
 @Component({
   selector: 'app-creer-reservation',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './creer-reservation.component.html',
   styleUrls: ['./creer-reservation.component.css']
 })
 export class CreerReservationComponent {
   formNewReservation: FormGroup;
   tablesNonOccupees: TableNonOccupees[] = [];
+  idRestaurant : number = 0;
 
   constructor(
     private reservationService: ReservationService,
     private tableNonOccupeeService: TableNonOccuppesService,
     private utilisateurService: UtilisateurService,
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
+    this.idRestaurant = Number(this.route.snapshot.paramMap.get('id'));
     // Initialisation du formulaire avec FormBuilder
     this.formNewReservation = this.fb.group({
       nbPersonnes: ['', Validators.required],
@@ -37,8 +40,8 @@ export class CreerReservationComponent {
       idTableRestaurant: ['', Validators.required]
     });
 
-    // Récupération des tables non occupées
-    this.tableNonOccupeeService.get_tables_non_occupees(1).subscribe((response) => {
+    // Récupération des tables non occupées via l'ID du restaurant de l'URL
+    this.tableNonOccupeeService.get_tables_non_occupees(this.idRestaurant).subscribe((response) => {
       this.tablesNonOccupees = response;
     });
   }
@@ -53,7 +56,7 @@ export class CreerReservationComponent {
       prenom: this.formNewReservation.value.prenom,
       login: '', 
       password: '',
-      idRestaurant: 1
+      idRestaurant: this.idRestaurant
     };
     
     // Étape 1 : Ajouter l'utilisateur
@@ -67,7 +70,7 @@ export class CreerReservationComponent {
           statut: 'confirmée',
           horaireReservation: horaireReservation,
           utilisateur: utilisateurCree, // Utilisateur retourné par l'API
-          idRestaurant: 1, // Id du restaurant associé
+          idRestaurant: 2, // Id du restaurant associé
           idTableRestaurant: this.formNewReservation.value.idTableRestaurant
         };
     
