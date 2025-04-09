@@ -33,7 +33,7 @@ export class ConnexionComponent {
       .subscribe({
         next: response => {
           localStorage.setItem('Jwt', response.token);
-          sessionStorage.setItem("utilisateur", this.utilisateur.prenom)
+          sessionStorage.setItem("utilisateur", this.utilisateur.prenom);
           this.router.navigate(['/accueil']);
         },
         error: () => {

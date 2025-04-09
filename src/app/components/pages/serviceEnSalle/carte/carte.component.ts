@@ -7,13 +7,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { TableOccupee } from '../../../../interfaces/table-occupee';
 import { NouvelleCommande } from '../../../../interfaces/nouvelle-commande';
-import { PlatComponent } from "./plat/plat.component";
 import { FormsModule } from '@angular/forms';
 import { CommandeCreationService } from '../../../../services/commande-creation.service';
 
 @Component({
   selector: 'app-carte',
-  imports: [CommonModule, RouterModule, FormsModule, PlatComponent],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './carte.component.html',
   styleUrls: ['./carte.component.css']
 })

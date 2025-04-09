@@ -6,13 +6,13 @@ import { Reservation } from '../interfaces/reservation';
   providedIn: 'root'
 })
 export class ReservationService {
-  private BASE_URL = "http://localhost:8080/reservations/";
+  private BASE_URL = "http://localhost:8080/reservations";
 
 
   constructor(private client: HttpClient) { }
 
   getReservations(idRestaurant: number) {
-    return this.client.get<Reservation[]>(`${this.BASE_URL} ${idRestaurant}`);
+    return this.client.get<Reservation[]>(`${this.BASE_URL}/${idRestaurant}`);
   }
 
   getReservationByIdTableRestaurant(idTable: number) {
