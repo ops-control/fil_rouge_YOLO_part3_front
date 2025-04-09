@@ -32,7 +32,7 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.serviceTableNonOccupee.get_tables_non_occupees(1).subscribe(response => {
+    this.serviceTableNonOccupee.get_tables_non_occupees(2).subscribe(response => {
       this.tablesNonOccupees = response;
     });
   }

@@ -14,7 +14,7 @@ export class ListeTablesNonOccupeesComponent {
   tablesNonOccupees: TableNonOccupees[] = [];
 
     constructor(private tablesNonOccupeesService: TableNonOccuppesService){
-      tablesNonOccupeesService.get_tables_non_occupees(1).subscribe(response => {
+      tablesNonOccupeesService.get_tables_non_occupees(2).subscribe(response => {
         this.tablesNonOccupees = response;
       });
     }
