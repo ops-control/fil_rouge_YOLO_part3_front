@@ -6,4 +6,5 @@ export interface Plat {
     prix: number;
     description: string;
     categorie: Categorie;
+    quantite: number;
 }

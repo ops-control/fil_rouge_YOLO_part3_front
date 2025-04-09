@@ -3,42 +3,42 @@ import { Reservation } from '../../../../interfaces/reservation';
 import { ReservationService } from '../../../../services/reservation.service';
 import { CommonModule } from '@angular/common';
 import { ItemReservationComponent } from '../item-reservation/item-reservation.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TableNonOccuppesService } from '../../../../services/tableNonOccupees.service';
-import { TableOccupee } from '../../../../interfaces/table-occupee';
 import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
 
 @Component({
   selector: 'app-reservation',
-  imports: [CommonModule, ItemReservationComponent],
+  imports: [CommonModule, ItemReservationComponent, RouterModule],
   templateUrl: './listeReservations.component.html',
   styleUrl: './listeReservations.component.css'
 })
-export class ReservationComponent implements OnInit {
+export class ReservationComponent {
   reservations : Reservation[] = [];
   tablesNonOccupees : TableNonOccupees[] = [];
   todayReservations: Reservation[] = [];
   upcomingReservations: Reservation[] = [];
+  idRestaurant : number = 0;
 
   constructor(
     private serviceReservation: ReservationService,
     private serviceTableNonOccupee: TableNonOccuppesService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
-    this.serviceReservation.getReservations().subscribe(response => {
+    this.idRestaurant = Number(this.route.snapshot.paramMap.get('id'));
+    this.serviceReservation.getReservations(this.idRestaurant).subscribe(response => {
       this.reservations = response;
       this.filterReservations();
     });
-  }
-
-  ngOnInit(){
-    this.serviceTableNonOccupee.get_tables_non_occupees(1).subscribe(response => {
+    this.serviceTableNonOccupee.get_tables_non_occupees(this.idRestaurant).subscribe(response => {
       this.tablesNonOccupees = response;
     });
   }
 
   getTableNumberByReservation(reservation: Reservation): number | undefined {
-    const tableNonOccupee = this.tablesNonOccupees.find(table => table.idRestaurant === reservation.idRestaurant);
+    const tableNonOccupee = this.tablesNonOccupees.find(table => table.idTableRestaurant === reservation.idTableRestaurant);
+    console.log(tableNonOccupee);
     return tableNonOccupee ? tableNonOccupee.numeroTable : undefined;
   }
 
@@ -57,7 +57,4 @@ export class ReservationComponent implements OnInit {
     });
   }
 
-  createReservation() {
-    this.router.navigate(["/reservations/creer-resa"]);
-  }  
 }
