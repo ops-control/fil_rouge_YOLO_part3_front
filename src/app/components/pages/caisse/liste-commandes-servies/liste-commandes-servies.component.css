@@ -1,0 +1,8 @@
+.hover-effect {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .hover-effect:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: scale(1.01);
+  }

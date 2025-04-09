@@ -1,1 +1,60 @@
-<p>liste-commandes-passees works!</p>
+<div class="container px-3" *ngFor="let cmd of commandes">
+    <div class="container px-3 bg-white rounded-2 mb-4 hover-effect clickable-div" (click)="ouvrirModale(cmd.idCommande)" >
+        <div *ngIf="cmd" class="py-3">
+            <div class="row align-items-start pb-2">
+                <div class="col-10 pt-1">
+                    <h2>Commande n° {{cmd.idCommande}}</h2>
+                </div>
+                <div class="col-2 text-end fs-1 text-black">
+
+                </div>
+                <div class="col-10 pb-2">
+                    <h3>Table n° {{cmd.numeroTable}}</h3>
+                </div>
+
+            </div>
+            <div *ngFor="let cat of getCategorie(cmd)" class="">
+                <div class="row align-items-center mb-2 pe-3 bg-light rounded-5">
+                    <div class="col-6 pt-1">
+                        <div>
+                            <h4>{{ cat }}</h4>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end text-black">
+                        <div>Qté</div>
+                    </div>
+
+                </div>
+                <div class="plats-list pb-3">
+                    <div *ngFor="let ligne of getPlatsByCategorie(cmd,cat)">
+                        <div class="row align-items-center">
+                            <div class="col-6 pt-1">
+                                <div>{{ ligne.plat.nom }}</div>
+                            </div>
+                            <div class="col-2 text-end text-black">
+                                <div>{{ ligne.quantite }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="getPlatsByCategorie(cmd,cat).length === 0">
+                        Aucun plat disponible dans cette catégorie.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div *ngIf="!cmd" class="loading">
+            Chargement de la carte...
+        </div>
+    </div>
+</div>
+
+
+
+<app-modal-modification-statut-commande-en-prete
+#modaleCommandePrete
+[titre]="'Passer la commande en prete'"
+(onConfirm)="modifierCommandeConfirmee()">
+<p>Passez la commande en "prête" ?</p>
+</app-modal-modification-statut-commande-en-prete> 
