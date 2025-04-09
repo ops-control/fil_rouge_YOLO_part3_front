@@ -6,6 +6,8 @@ import { TableNonOccuppesService } from '../../../../services/tableNonOccupees.s
 import { TableNonOccupees } from '../../../../interfaces/table-non-occupees';
 import { Reservation } from '../../../../interfaces/reservation';
 import { CommonModule } from '@angular/common';
+import { UtilisateurService } from '../../../../services/utilisateur.service';
+import { Utilisateur } from '../../../../interfaces/utilisateur';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class CreerReservationComponent {
   constructor(
     private reservationService: ReservationService,
     private tableNonOccupeeService: TableNonOccuppesService,
+    private utilisateurService: UtilisateurService,
     private router: Router,
     private fb: FormBuilder
   ) {
@@ -29,7 +32,9 @@ export class CreerReservationComponent {
       nbPersonnes: ['', Validators.required],
       date: ['', Validators.required],
       heure: ['', Validators.required],
-      idTableRestaurant: ['', Validators.required] // Champ pour sélectionner une table
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      idTableRestaurant: ['', Validators.required]
     });
 
     // Récupération des tables non occupées
@@ -41,35 +46,50 @@ export class CreerReservationComponent {
   saveReservation() {
     if (this.formNewReservation.valid) {
       const horaireReservation = new Date(`${this.formNewReservation.value.date}T${this.formNewReservation.value.heure}`);
-      const reservation: Reservation = {
-        nbPersonne: this.formNewReservation.value.nbPersonnes,
-        statut: 'confirmée',
-        horaireReservation: horaireReservation,
-        utilisateur: {
-          idUtilisateur: 1, // Utilisateur temporaire pour l'exemple
-          nom: this.formNewReservation.value.nom,
-          prenom: '',
-          login: '',
-          password: ''
-        },
-        idRestaurant: 1, // Id du restaurant associé
-        idTableRestaurant: this.formNewReservation.value.idTableRestaurant
-      };
-
-      // Envoi de la réservation au backend
-      this.reservationService.addReservation(reservation).subscribe(
-        response => {
-          console.log('Réservation créée avec succès', response);
-          this.router.navigate(['/reservations']); // Redirection après succès
-        },
-        error => {
-          console.error('Erreur lors de la création de la réservation', error);
-        }
-      );
-    } else {
-      console.error('Formulaire invalide');
-    }
+      
+    // Construire l'utilisateur à ajouter
+    const utilisateur: Utilisateur = {
+      nom: this.formNewReservation.value.nom,
+      prenom: this.formNewReservation.value.prenom,
+      login: '', 
+      password: '',
+      idRestaurant: 1
+    };
+    
+    // Étape 1 : Ajouter l'utilisateur
+    this.utilisateurService.addUtilisateur(utilisateur).subscribe(
+      (utilisateurCree: Utilisateur) => {
+        console.log('Utilisateur créé avec succès', utilisateurCree);
+    
+        // Étape 2 : Utiliser l'utilisateur créé pour créer la réservation
+        const reservation: Reservation = {
+          nbPersonne: this.formNewReservation.value.nbPersonnes,
+          statut: 'confirmée',
+          horaireReservation: horaireReservation,
+          utilisateur: utilisateurCree, // Utilisateur retourné par l'API
+          idRestaurant: 1, // Id du restaurant associé
+          idTableRestaurant: this.formNewReservation.value.idTableRestaurant
+        };
+    
+        // Envoi de la réservation au backend
+        this.reservationService.addReservation(reservation).subscribe(
+          (response) => {
+            console.log('Réservation créée avec succès', response);
+            this.router.navigate(['/reservations']); // Redirection après succès
+          },
+          (error) => {
+            console.error('Erreur lors de la création de la réservation', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Erreur lors de la création de l\'utilisateur', error);
+      }
+    );
+  } else {
+    console.error('Formulaire invalide');
   }
+}
 
   display_error(field: string, error: string) {
     return this.formNewReservation?.get(field)?.dirty
