@@ -27,7 +27,7 @@ export class ModalReceptionClientTableReserveeComponent {
     if (!idReservation) 
       return ;
 
-    this.modifierReservation.emit({ id: idReservation, statut: 'arrivée' });
+    this.modifierReservation.emit({ id: idReservation, statut: 'arrivee' });
     this.closeModal.emit();
   }
 

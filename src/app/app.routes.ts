@@ -18,6 +18,7 @@ export const routes: Routes = [
     { path: "carte", component: CarteComponent},
     { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
     { path: "commandes", component: ListeCommandesServiesComponent},
-    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent }
-
+    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent },
+    { path: "connexion", component: ConnexionComponent},
+    { path: "**", redirectTo : "/accueil"}
 ];
