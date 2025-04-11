@@ -14,7 +14,7 @@ import { Utilisateur } from '../../../interfaces/utilisateur';
 export class ConnexionComponent {
   form : FormGroup;
   errorMessage: string | null = null;
-  utilisateur : Utilisateur = {'prenom': "valentin", 'nom' : "Charrier" };
+  utilisateur : Utilisateur = {'prenom': "Maud", 'nom' : "Gauthier" };
 
   constructor(private fb : FormBuilder,
               private router : Router,
