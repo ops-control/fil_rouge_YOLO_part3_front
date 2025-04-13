@@ -10,20 +10,21 @@ import { ListeCommandesServiesComponent } from './components/pages/caisse/liste-
 import { ConsultationCommandeAReglerComponent } from './components/pages/caisse/consultation-commande-aregler/consultation-commande-aregler.component';
 import { ListeCommandesPasseesComponent } from './components/pages/cuisine/liste-commandes-passees/liste-commandes-passees.component';
 import { ConnexionComponent } from './components/pages/connexion/connexion.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: "accueil", component: AccueilComponent},
-    { path: "service", component: ListeTablesOccupeesComponent},
-    { path: "reservations/:id", component: ReservationComponent},
-    { path: "creer-resa/:id", component: CreerReservationComponent},
-    { path: "carte", component: CarteComponent},
-    { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
-    { path: "commandes", component: ListeCommandesServiesComponent},
-    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent},
     { path: "connexion", component: ConnexionComponent},
-    { path: "caisse", component: ListeCommandesServiesComponent},
-    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent },
-    { path: "cuisine", component: ListeCommandesPasseesComponent },
+    { path: "service", component: ListeTablesOccupeesComponent, canActivate: [authGuard]},
+    { path: "reservations/:id", component: ReservationComponent, canActivate: [authGuard]},
+    { path: "creer-resa/:id", component: CreerReservationComponent, canActivate: [authGuard]},
+    { path: "carte", component: CarteComponent, canActivate: [authGuard]},
+    { path: "reception-clientele/:id", component: ReceptionClienteleComponent, canActivate: [authGuard]},
+    { path: "commandes", component: ListeCommandesServiesComponent, canActivate: [authGuard]},
+    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent, canActivate: [authGuard]},
+    { path: "caisse", component: ListeCommandesServiesComponent, canActivate: [authGuard]},
+    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent, canActivate: [authGuard]},
+    { path: "cuisine", component: ListeCommandesPasseesComponent, canActivate: [authGuard]},
     { path: "**", redirectTo : "/accueil"}
 
 ];
