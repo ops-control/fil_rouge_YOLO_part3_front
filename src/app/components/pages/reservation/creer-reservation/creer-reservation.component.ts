@@ -64,35 +64,35 @@ export class CreerReservationComponent {
       (utilisateurCree: Utilisateur) => {
         console.log('Utilisateur créé avec succès', utilisateurCree);
     
-        // Étape 2 : Utiliser l'utilisateur créé pour créer la réservation
-        const reservation: Reservation = {
-          nbPersonne: this.formNewReservation.value.nbPersonnes,
-          statut: 'confirmée',
-          horaireReservation: horaireReservation,
-          utilisateur: utilisateurCree, // Utilisateur retourné par l'API
-          idRestaurant: 2, // Id du restaurant associé
-          idTableRestaurant: this.formNewReservation.value.idTableRestaurant
-        };
+    // Étape 2 : Utiliser l'utilisateur créé pour créer la réservation
+    const reservation: Reservation = {
+    nbPersonne: this.formNewReservation.value.nbPersonnes,
+    statut: 'confirmée',
+    horaireReservation: horaireReservation,
+    utilisateur: utilisateurCree, // Utilisateur retourné par l'API
+    idRestaurant: 2, // Id du restaurant associé
+    idTableRestaurant: this.formNewReservation.value.idTableRestaurant
+    };
     
-        // Envoi de la réservation au backend
-        this.reservationService.addReservation(reservation).subscribe(
-          (response) => {
-            console.log('Réservation créée avec succès', response);
-            this.router.navigate(['/reservations', this.idRestaurant]); // Redirection après succès
-          },
-          (error) => {
-            console.error('Erreur lors de la création de la réservation', error);
-          }
-        );
+    // Envoi de la réservation au backend
+    this.reservationService.addReservation(reservation).subscribe(
+    (response) => {
+      console.log('Réservation créée avec succès', response);
+      this.router.navigate(['/reservations', this.idRestaurant]); // Redirection après succès
+      },
+      (error) => {
+        console.error('Erreur lors de la création de la réservation', error);
+      }
+    );
       },
       (error) => {
         console.error('Erreur lors de la création de l\'utilisateur', error);
       }
     );
-  } else {
+    } else {
     console.error('Formulaire invalide');
+    }
   }
-}
 
   display_error(field: string, error: string) {
     return this.formNewReservation?.get(field)?.dirty

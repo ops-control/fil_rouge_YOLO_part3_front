@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { UserLogged } from '../../../interfaces/user-logged';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -46,10 +45,4 @@ export class HeaderComponent {
   logout(){
     this.authService.logout();
   }
-
-  // deconnecter(): void {
-  //   sessionStorage.removeItem('utilisateur');
-  //   this.router.navigate(['/accueil']);
-  // }
-
 }
