@@ -8,6 +8,7 @@ import { CarteComponent } from './components/pages/serviceEnSalle/carte/carte.co
 import { ReceptionClienteleComponent } from './components/pages/reception/reception-clientele/reception-clientele.component';
 import { ListeCommandesServiesComponent } from './components/pages/caisse/liste-commandes-servies/liste-commandes-servies.component';
 import { ConsultationCommandeAReglerComponent } from './components/pages/caisse/consultation-commande-aregler/consultation-commande-aregler.component';
+import { ListeCommandesPasseesComponent } from './components/pages/cuisine/liste-commandes-passees/liste-commandes-passees.component';
 import { ConnexionComponent } from './components/pages/connexion/connexion.component';
 
 export const routes: Routes = [
@@ -18,6 +19,11 @@ export const routes: Routes = [
     { path: "carte", component: CarteComponent},
     { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
     { path: "commandes", component: ListeCommandesServiesComponent},
-    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent }
+    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent},
+    { path: "connexion", component: ConnexionComponent},
+    { path: "caisse", component: ListeCommandesServiesComponent},
+    { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent },
+    { path: "cuisine", component: ListeCommandesPasseesComponent },
+    { path: "**", redirectTo : "/accueil"}
 
 ];

@@ -78,7 +78,7 @@ export class CreerReservationComponent {
         this.reservationService.addReservation(reservation).subscribe(
           (response) => {
             console.log('Réservation créée avec succès', response);
-            this.router.navigate(['/reservations']); // Redirection après succès
+            this.router.navigate(['/reservations', this.idRestaurant]); // Redirection après succès
           },
           (error) => {
             console.error('Erreur lors de la création de la réservation', error);

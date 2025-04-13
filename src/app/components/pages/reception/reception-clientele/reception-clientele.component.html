@@ -1,8 +1,8 @@
-<div class="container d-flex justify-content-center mb-5" *ngFor="let table of tables_non_occupees">
-    <div class="card border border-black btn btn-success rounded-pill px-4 mx-2" style="width: 100%;" (click)="selectionnerTable(table)">
-        <h3 class="card-text pb-2 text-center">Table n° {{ table.numeroTable }}</h3>
-        <h4 class="card-text pb-2">Nombre de places : {{ table.nbPlaces }}</h4>
-        <div class="card-body text-center my-3 m-0 p-0" *ngIf="(table.reservations ?? []).length > 0">
+<div class="container d-flex justify-content-center mb-4" *ngFor="let table of tables_non_occupees">
+    <div class="card border btn btn-success rounded-3 mx-2" style="width: 100%;" (click)="selectionnerTable(table)">
+        <h3 class="card-text px-0 m-0 py-3 text-center">Table n° {{ table.numeroTable }}</h3>
+        <h4 class="card-text p-0 m-0">Nombre de places : {{ table.nbPlaces }}</h4>
+        <div class="card-body text-center m-0 p-0" *ngIf="(table.reservations ?? []).length > 0">
             <div *ngFor="let reservation of table.reservations">
               <h4>Réservée par : {{ reservation.utilisateur.prenom }} {{ reservation.utilisateur.nom }}</h4>
               <h4>Statut : {{ reservation.statut }}</h4>
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="card-body text-center my-3 m-0 p-0" *ngIf="!table.reservations || table.reservations.length === 0">
-            <h4 class="card-text pb-2">Statut : Libre</h4>
+            <h4 class="card-text">Statut : Libre</h4>
         </div>
     </div>
 </div>
