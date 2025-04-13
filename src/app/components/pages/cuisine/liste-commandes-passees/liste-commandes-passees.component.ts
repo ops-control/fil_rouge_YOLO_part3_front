@@ -32,7 +32,7 @@ export class ListeCommandesPasseesComponent {
       if (!this.commandeAModifier) return;
   
       this.service.putCommandePrete(this.commandeAModifier).subscribe(() => {
-        //this.commandeAModifier = undefined;
+        this.commandeAModifier = undefined;
         this.actualiserCommandes();
       });
     }
