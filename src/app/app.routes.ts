@@ -10,12 +10,14 @@ import { ListeCommandesServiesComponent } from './components/pages/caisse/liste-
 import { ConsultationCommandeAReglerComponent } from './components/pages/caisse/consultation-commande-aregler/consultation-commande-aregler.component';
 import { ListeCommandesPasseesComponent } from './components/pages/cuisine/liste-commandes-passees/liste-commandes-passees.component';
 import { ConnexionComponent } from './components/pages/connexion/connexion.component';
+import { GererReservationComponent } from './components/pages/reservation/gerer-reservation/gerer-reservation.component';
 
 export const routes: Routes = [
     { path: "accueil", component: AccueilComponent},
     { path: "service", component: ListeTablesOccupeesComponent},
     { path: "reservations/:id", component: ReservationComponent},
     { path: "creer-resa/:id", component: CreerReservationComponent},
+    { path: "gerer-resa/:id", component: GererReservationComponent},
     { path: "carte", component: CarteComponent},
     { path: "reception-clientele/:id", component: ReceptionClienteleComponent},
     { path: "commandes", component: ListeCommandesServiesComponent},
@@ -25,5 +27,4 @@ export const routes: Routes = [
     { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent },
     { path: "cuisine", component: ListeCommandesPasseesComponent },
     { path: "**", redirectTo : "/accueil"}
-
 ];
