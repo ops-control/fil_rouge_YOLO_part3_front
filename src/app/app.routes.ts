@@ -10,6 +10,7 @@ import { ListeCommandesServiesComponent } from './components/pages/caisse/liste-
 import { ConsultationCommandeAReglerComponent } from './components/pages/caisse/consultation-commande-aregler/consultation-commande-aregler.component';
 import { ListeCommandesPasseesComponent } from './components/pages/cuisine/liste-commandes-passees/liste-commandes-passees.component';
 import { ConnexionComponent } from './components/pages/connexion/connexion.component';
+import { GererReservationComponent } from './components/pages/reservation/gerer-reservation/gerer-reservation.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: "service", component: ListeTablesOccupeesComponent, canActivate: [authGuard]},
     { path: "reservations/:id", component: ReservationComponent, canActivate: [authGuard]},
     { path: "creer-resa/:id", component: CreerReservationComponent, canActivate: [authGuard]},
+    { path: "gerer-resa/:id", component: GererReservationComponent, canActivate: [authGuard]},
     { path: "carte", component: CarteComponent, canActivate: [authGuard]},
     { path: "reception-clientele/:id", component: ReceptionClienteleComponent, canActivate: [authGuard]},
     { path: "commandes", component: ListeCommandesServiesComponent, canActivate: [authGuard]},
@@ -26,5 +28,4 @@ export const routes: Routes = [
     { path: "payer/:idCommande", component: ConsultationCommandeAReglerComponent, canActivate: [authGuard]},
     { path: "cuisine", component: ListeCommandesPasseesComponent, canActivate: [authGuard]},
     { path: "**", redirectTo : "/accueil"}
-
 ];

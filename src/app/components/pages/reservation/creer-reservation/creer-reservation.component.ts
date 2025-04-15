@@ -48,7 +48,8 @@ export class CreerReservationComponent {
 
   saveReservation() {
     if (this.formNewReservation.valid) {
-      const horaireReservation = new Date(`${this.formNewReservation.value.date}T${this.formNewReservation.value.heure}`);
+      const horaireReservation = 
+      new Date(`${this.formNewReservation.value.date}T${this.formNewReservation.value.heure}`);
       
     // Construire l'utilisateur à ajouter
     const utilisateur: Utilisateur = {

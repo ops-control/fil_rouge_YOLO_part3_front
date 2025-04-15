@@ -1,4 +1,4 @@
-<div class="reservation-card bg-light rounded p-3 mb-3">
+<div class="reservation-card bg-light rounded p-3 mb-3" [routerLink]="['/gerer-resa', reservation?.idReservation]">
     <p class="reservation-date mb-1">Le {{ reservation?.horaireReservation | date : 'dd/MM/yyyy à HH:mm' }}</p>
     <p class="reservation-client mb-1">Client : {{ reservation?.utilisateur?.prenom }} {{ reservation?.utilisateur?.nom | uppercase }}</p>
     <p class="reservation-people mb-1">Nombre de personnes : {{ reservation?.nbPersonne }}</p>

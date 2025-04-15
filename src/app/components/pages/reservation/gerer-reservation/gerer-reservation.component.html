@@ -1,0 +1,18 @@
+  <div class="container mt-4">
+    <h3 class="mb-4">Gestion de la réservation :</h3>
+    <div *ngIf="reservation; else noReservation">
+      <app-item-reservation [reservation]="reservation" [tableNumber]="getTableNumberByReservation(reservation)">
+      </app-item-reservation>
+    </div>
+    <ng-template #noReservation>
+      <p>Aucune réservation trouvée pour l'ID {{ idReservation }}.</p>
+    </ng-template>
+    <div>
+        <button type="button" class="btn btn-success mt-4" [routerLink]="['/creer-resa', idRestaurant]">
+        Modifier une réservation
+        </button>
+        <button type="button" class="btn btn-danger mt-4" [routerLink]="['/creer-resa', idRestaurant]">
+            Supprimer une réservation
+        </button>
+    </div>
+  </div>
