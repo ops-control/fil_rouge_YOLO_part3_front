@@ -15,6 +15,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('Jwt');
+    localStorage.clear;
     sessionStorage.removeItem('utilisateur');
     sessionStorage.removeItem('restaurant');
     this.router.navigate(['/accueil']);
