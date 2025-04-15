@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { Utilisateur } from '../../../interfaces/utilisateur';
+import { UserLogged } from '../../../interfaces/user-logged';
+import { UserLoggedService } from '../../../services/user-logged.service';
 
 @Component({
   selector: 'app-connexion',
@@ -14,11 +15,12 @@ import { Utilisateur } from '../../../interfaces/utilisateur';
 export class ConnexionComponent {
   form : FormGroup;
   errorMessage: string | null = null;
-  utilisateur : Utilisateur = {'prenom': "Maud", 'nom' : "Gauthier" };
+  userLogged?: UserLogged;
 
   constructor(private fb : FormBuilder,
               private router : Router,
-              private authService : AuthService) {
+              private authService : AuthService,
+              private userLoggedService: UserLoggedService) {
 
               this.form = this.fb.group({
                   login: ['',Validators.required],
@@ -33,7 +35,8 @@ export class ConnexionComponent {
       .subscribe({
         next: response => {
           localStorage.setItem('Jwt', response.token);
-          sessionStorage.setItem("utilisateur", this.utilisateur.prenom);
+          sessionStorage.setItem('utilisateur', response.user.prenom);
+          sessionStorage.setItem('restaurant', JSON.stringify(response.user.idRestaurant));
           this.router.navigate(['/accueil']);
         },
         error: () => {

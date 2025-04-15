@@ -9,9 +9,10 @@
       </div> 
       -->
       <div class="col-8 d-flex justify-content-end align-items-center gap-2">
-        <a class="link-secondary text-decoration-none text-black" [routerLink]="['/accueil']" aria-label="Search" *ngIf="estConnecte()">Bonjour {{get_prenom()}} !</a>
-         <a class="text-decoration-none text-black" [routerLink]="['/accueil']"><i class="bi bi-person-circle user-icon"></i></a>
-         <button class="logout-button" title="Se déconnecter">
+        <a class="link-secondary text-decoration-none text-black" *ngIf="getUsername() == null" [routerLink]="['/connexion']" aria-label="page">Se connecter</a>
+        <div class="text-black" *ngIf="getUsername() != null" [routerLink]="['/accueil']" aria-label="page">Bonjour {{getUsername()}} !</div>
+        <!-- <button class="link-secondary text-decoration-none text-black nav-link active btn-link" *ngIf="getUsername() != null" aria-label="page" (click)="logout()">&nbsp; ⏻</button> -->
+        <button *ngIf="getUsername() != null" (click)="logout()" class="logout-button " title="Se déconnecter">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path d="M497 273l-80 80c-15 15-41 4.5-41-17v-48H224c-13 0-24-11-24-24s11-24 24-24h152v-48c0-21.5 26-32 41-17l80 80c9.4 9.4 9.4 24.6 0 34zM160 96H96c-35.3 0-64 28.7-64 64v192c0 35.3 28.7 64 64 64h64c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-70.7 0-128-57.3-128-128V160C-32 89.3 25.3 32 96 32h64c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
           </svg>
